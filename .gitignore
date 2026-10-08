@@ -4,3 +4,5 @@ build/
 *.p12
 *.jks
 .env
+config/application.properties
+logs/

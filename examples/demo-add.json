@@ -1,0 +1,7 @@
+{
+  "changeItemId": "10001",
+  "target": "DEMO",
+  "requestType": "ADD_PERMISSION_TO_USER",
+  "user": {"dn": "CN=Anna Johansson,OU=Users,OU=Tornbergs,DC=demo,DC=tornbergs,DC=consulting"},
+  "group": {"dn": "CN=STORE-User,OU=Groups,OU=Tornbergs,DC=demo,DC=tornbergs,DC=consulting"}
+}

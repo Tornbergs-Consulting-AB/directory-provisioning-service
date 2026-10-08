@@ -1,75 +1,61 @@
-# Directory Provisioning Service
+# Directory Provisioning Service — 0.3.0
 
-REST-to-directory provisioning. First milestone: a DEV response-contract probe to establish how IG handles responses before implementing LDAP.
+Java 21 / Quarkus / UnboundID LDAPS service. Implements add/remove direct AD group membership using DN or AD objectGUID identifiers.
 
-## Current implementation
+## Quick start from this archive
 
-The probe returns predetermined HTTP/JSON responses. It does not connect to LDAP, authenticate credentials, validate the JSON body, or change memberships. Basic authentication is checked for syntax only. Use synthetic credentials. Do not configure this as a real fulfillment target: a simulated 200 could cause IG to mark a real request fulfilled.
+A prebuilt distribution is included at `dist/quarkus-app`, compiled and tested using Java 17-compatible bytecode. Run it using your Java 21. Set up HTTPS and the LDAP truststore first, then run `java -jar dist/quarkus-app/quarkus-run.jar` from the project root. Maven rebuilds use Java 21 by default.
 
-Production implementation planned: Java 21, Quarkus, UnboundID LDAP SDK. The probe intentionally uses only JDK libraries and will be replaced by the production REST layer.
-
-## Windows quick start (PowerShell)
-
-Extract the archive to `C:\Development\directory-provisioning-service`. Open that folder in VS Code.
+## Build
 
 ```powershell
-java -version
-java -jar dist/response-probe.jar
+mvn clean verify
 ```
 
-The included JAR was compiled with Java 17-compatible bytecode and runs on Java 21. To rebuild with your Java 21 and Maven:
+Or the same command in a Linux shell. The built distribution is the **entire** `target/quarkus-app` directory. Preserve its `lib`, `app` and `quarkus` subdirectories; do not copy only quarkus-run.jar.
+
+## Configure and run
+
+1. Copy `examples/service-config.properties` to `config/application.properties`.
+2. Place your existing LDAP truststore at `config/certs/ldap-truststore.p12`, or change its path.
+3. Configure a separate HTTPS server PKCS12 keystore containing a private key and a certificate trusted by IG. See [lab setup](docs/demo-setup.md).
+4. Set `DPS_TRUSTSTORE_PASSWORD` and `DPS_HTTPS_KEYSTORE_PASSWORD` securely on the service host. AD credentials are not configured here.
+5. From the project root run:
 
 ```powershell
-mvn package
-java -jar target/directory-provisioning-service-0.1.0-SNAPSHOT.jar
+java -jar target/quarkus-app/quarkus-run.jar
 ```
 
-Alternatively, compile directly:
+Linux uses the same command. External `config/application.properties` is loaded relative to the current working directory. Relative certificate/log paths are also relative to that directory.
 
-```powershell
-New-Item -ItemType Directory -Force build/classes | Out-Null
-javac --release 21 -d build/classes src/main/java/consulting/tornbergs/directory/ResponseProbe.java
-java -cp build/classes consulting.tornbergs.directory.ResponseProbe
-```
+GET `/api/v1/provisioning` performs a TLS LDAP connection and bind without changing any objects; it accepts the same Basic credentials as POST. This supports GET-based connection tests.
 
-Default address: `http://127.0.0.1:8080`. Check `GET /health`.
+Health: `https://<service-host>:8443/health`. It checks only the application; it does not bind to AD or assert LDAP readiness.
 
-To make it reachable from the IG DEV server, choose an appropriate listening address and permit only the needed inbound DEV connection:
+## Test
 
-```powershell
-$env:DPS_HOST = '0.0.0.0'
-$env:DPS_PORT = '8080'
-$env:DPS_LOG_LEVEL = 'FINE'
-java -jar target/directory-provisioning-service-0.1.0-SNAPSHOT.jar 2>&1 | Tee-Object -FilePath probe.log
-```
+See [DEMO setup and membership tests](docs/demo-setup.md). Use a LAB user/group and supplied credentials. No arbitrary LDAP URL is accepted. Allowed bind DN is compared as an LDAP DN, not as an arbitrary string. The configured administrator account is a LAB choice; AD ACLs control what it can change.
 
-This probe uses HTTP. Use synthetic credentials only. If the IG connector requires HTTPS, put it behind a TLS reverse proxy whose certificate IG trusts. Real AD credentials belong only on the later HTTPS service.
+First version supports one configured target, DEMO. `dps.search-base` scopes subtree GUID searches; DN operations read the supplied DNs directly. It is **not** an authorization boundary.
 
-## Linux
+## IG integration
 
-```bash
-mvn package
-DPS_HOST=127.0.0.1 DPS_PORT=8080 java -jar target/directory-provisioning-service-0.1.0-SNAPSHOT.jar
-```
+POST `/api/v1/provisioning` over HTTPS; Basic credentials are passed to AD. Use `scripts/ig-request.js` for the body and `scripts/ig-headers.js` for correlation. Map `fulfillmentId` and `comment` from response JSON. All real requests require `changeItemId`.
 
-## Response tests
+Observed IG contract: 200 -> COMPLETED/FULFILLED and response comment mapped; 400/503 -> RETRY/PENDING with IG's generic error; single-item retry dispatches again after correcting the endpoint. Service logs are the detailed failure evidence.
 
-See [IG test procedure](docs/ig-response-tests.md) and [design](docs/design.md). A Python smoke test is supplied:
+Subordinate applications with missing account context remain unresolved. The request script deliberately fails if accountProvId is missing. Do not use an identity DN as an unverified account fallback.
 
-```bash
-python scripts/smoke_test.py
-```
+## Probe
 
-It compiles the source with a JDK 17-compatible release, starts an isolated probe, tests responses, and checks that credentials are absent from logs. Production builds target Java 21.
+Original standalone probe remains in `dist/response-probe.jar` and can still run separately. The Quarkus probe paths `/test/responses/<scenario>` are disabled by default. Enable `dps.probe-enabled=true` only for isolated synthetic tests. GET returns a connection-test response while enabled. POST response comments identify the change item and say SIMULATED. Credentials on probe paths are syntax-checked only, not authenticated against AD.
 
-## Start your repository
+Original `scripts/smoke_test.py` tests the **old standalone probe**, not the new LDAP application. Run Maven tests for the new application.
 
-This archive is a source scaffold, not an already-created GitHub repository. In the extracted folder:
+## Current limits
 
-```bash
-git init -b main
-git add .
-git commit -m "Add DEV fulfillment response probe and design"
-```
+No failover, durable request ledger, credential caching, or automatic write retries. Each request opens and closes its own TLS LDAP connection. Operation timeouts are 5 seconds each, connection timeout 5 seconds; set IG HTTP timeout above the cumulative steps (suggest 60 seconds for initial testing). Repeat operations converge on requested membership state; changeItemId alone is not a deduplication key.
 
-Create an empty GitHub repository named `directory-provisioning-service` under your company account, then follow GitHub's instructions to add the remote and push. No license is selected yet; decide ownership and licensing before distribution.
+TLS failures reject the request; never enable trust-all. LDAP referrals are not followed. Logs never intentionally include Authorization headers, passwords, payloads or raw LDAP exception messages. Keep third-party protocol loggers at INFO even when enabling application DEBUG/TRACE.
+
+Existing project initialization instructions apply. No GitHub repository has been created by this package, and no license has been selected.

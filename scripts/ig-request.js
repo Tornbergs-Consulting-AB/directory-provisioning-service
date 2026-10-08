@@ -1,12 +1,16 @@
-// Generic REST request transformation. PROBE ONLY: keep your existing payload if preferred.
-// Select the scenario in the configured endpoint URL, not in the body.
+// Request transformation: account context must identify the intended AD account.
 var item = JSON.parse(inputValue);
+if (!item.accountProvId) {
+    throw new Error('Missing accountProvId: configure account selection/context before fulfillment.');
+}
+if (!item.permProvId) {
+    throw new Error('Missing permProvId.');
+}
 var body = {
-    requestId: String(item.changeItemId),
+    changeItemId: String(item.changeItemId),
+    target: 'DEMO',
     requestType: item.changeRequestType,
-    target: 'ad-dev',
-    user: { dn: item.accountProvId || '' },
-    group: { dn: item.permProvId || '' }
+    user: {dn: item.accountProvId},
+    group: {dn: item.permProvId}
 };
-// Missing account DN is intentionally visible. Do not silently use an identity DN.
 outputValue = JSON.stringify({http_body: body, service_method: 'POST'});

@@ -19,7 +19,7 @@
 
 ## Proposed production contract (not yet implemented)
 
-`POST /api/v1/membership`, `Authorization: Basic ...`, `X-Correlation-ID: ...`.
+`POST /api/v1/provisioning`, `Authorization: Basic ...`, `X-Correlation-ID: ...`.
 
 ```json
 {
@@ -52,3 +52,7 @@ No durable credential-bearing request queue. Membership operations are naturally
 2. Quarkus REST contract, authentication/target config and validation.
 3. UnboundID LDAP adapter and AD integration tests.
 4. Packaging, operational logging and runbooks.
+
+## Version 0.2 implementation
+
+DN path implemented for one DEMO target. changeItemId is mandatory and echoed in the response/comment. RequestId is correlation; fulfillmentId is iga-<changeItemId>, not a durable execution receipt. HTTPS required directly; no trust of forwarded-proto headers. Search base scopes GUID lookup. DN-based real AD add/repeat/remove/repeat validated by the user; GUID-based AD testing remains pending. Probe disabled by default.
