@@ -1,4 +1,4 @@
-# Copyright 2026 Marcus Tornberg
+# Copyright 2026 Tornbergs Consulting AB
 # SPDX-License-Identifier: Apache-2.0
 """Local packaged HTTPS checks; temporary certificates, no AD writes or real credentials.
 Run after Maven verify: python3 scripts/verify_packaged_diagnostics.py

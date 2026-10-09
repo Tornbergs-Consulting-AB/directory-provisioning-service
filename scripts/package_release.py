@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2026 Marcus Tornberg
+# Copyright 2026 Tornbergs Consulting AB
 # SPDX-License-Identifier: Apache-2.0
 """Validate and package the reviewed release without changing compiled application behavior."""
 import hashlib

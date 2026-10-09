@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2026 Marcus Tornberg
+# Copyright 2026 Tornbergs Consulting AB
 # SPDX-License-Identifier: Apache-2.0
 """Generate a runtime inventory and retain upstream notices; review changes before release."""
 import argparse

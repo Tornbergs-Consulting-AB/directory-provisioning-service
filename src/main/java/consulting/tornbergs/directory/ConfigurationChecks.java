@@ -1,4 +1,4 @@
-// Copyright 2026 Marcus Tornberg
+// Copyright 2026 Tornbergs Consulting AB
 // SPDX-License-Identifier: Apache-2.0
 package consulting.tornbergs.directory;
 

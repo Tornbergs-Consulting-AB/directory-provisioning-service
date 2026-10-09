@@ -1,4 +1,4 @@
-// Copyright 2026 Marcus Tornberg
+// Copyright 2026 Tornbergs Consulting AB
 // SPDX-License-Identifier: Apache-2.0
 // IG Generic REST request transformation for AD objectGUID identifiers.
 // Include accountProfile and permissionProfile in the fulfillment input payload.

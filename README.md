@@ -43,6 +43,6 @@ Probe endpoints are disabled by default. No production secrets or certificates a
 
 ## Documentation and licensing
 
-Start with the [1.0.0 documentation index](docs/README.md). Project source, scripts, deployment templates and documentation are licensed under [Apache-2.0](LICENSE), copyright 2026 Marcus Tornberg. Third-party components keep their own licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third-party/`. Java 21 and WinSW are separately installed prerequisites and are not bundled.
+Start with the [1.0.0 documentation index](docs/README.md). Project source, scripts, deployment templates and documentation are licensed under [Apache-2.0](LICENSE), copyright 2026 Tornbergs Consulting AB. Third-party components keep their own licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third-party/`. Java 21 and WinSW are separately installed prerequisites and are not bundled.
 
 See [SUPPORT.md](SUPPORT.md) for best-effort maintenance and customer ownership of deployment, [CONTRIBUTING.md](CONTRIBUTING.md) for contributions, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [distribution instructions](docs/distribution.md) for release preparation. This archive does not publish an external repository.
