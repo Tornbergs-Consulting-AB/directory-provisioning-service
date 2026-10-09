@@ -1,4 +1,4 @@
-# Operations — 0.5.0
+# Operations — 1.0.0
 
 ## Startup and logs
 
@@ -84,3 +84,5 @@ Single target and single DC remain supported; failover and multiple targets are 
 - WinSW installation: https://winsw.github.io/v2/doc/installation/
 
 Mandatory external directory settings and the full default review are in upgrade-0.5.0.md. Existing deployments must set target, LDAP host/port, search base and allowed bind DN explicitly.
+
+Uninstall instructions for both platforms: docs/uninstall.md in the distribution. Service removal retains configuration, certificates and logs unless explicitly purged.

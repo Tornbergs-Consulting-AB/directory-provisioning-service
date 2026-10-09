@@ -1,6 +1,6 @@
 # Production pilot acceptance
 
-Status: accepted by the user on 2026-10-09 for version 0.4.0. The user reports all pilot validation tests passed; Windows service operation and Linux service operation are confirmed. The fresh Linux installation script was not explicitly confirmed tested and remains a separate deployment validation item.
+Status: accepted by the user on 2026-10-09 for version 0.4.0. The user reports all pilot validation tests passed; Windows service operation and Linux service operation are confirmed. The user also confirmed successful Linux installation using the script on 2026-10-09.
 
 Confirmed by the user: real AD add/repeat/remove/repeat; IG fulfillment; GUID-based user and group moves without recollection; subsequent collection/publication changes pending verification to verified.
 

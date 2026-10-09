@@ -17,4 +17,6 @@ The script creates the dps account, copies the complete distribution/config/cert
 
 It does not generate certificates, install Java, adjust firewall/SELinux or test AD. A failure during installation can leave partial files; inspect the error and the installation directories before retrying. Do not remove a working installation to run this fresh-install script.
 
-Validation here: bash syntax, help/argument handling, existing-install protection and environment-file escaping logic. Full installation is pending a fresh RHEL lab host; this environment does not run systemd as PID 1.
+Validation here: bash syntax, help/argument handling, existing-install protection and environment-file escaping logic. The user confirmed successful installation using the script on a RHEL lab host on 2026-10-09. This environment does not run systemd as PID 1.
+
+Uninstall instructions for both platforms: docs/uninstall.md in the distribution. Service removal retains configuration, certificates and logs unless explicitly purged.

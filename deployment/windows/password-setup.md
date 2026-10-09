@@ -16,3 +16,5 @@ The wrapper executable and XML must share a basename in bundled mode, e.g. direc
 Restart via Services or Restart-Service -Name DirectoryProvisioningService. Reinstall is unnecessary for these env elements. Inspect logs/*.wrapper.log and logs/*err.log or logs/*out.log (filenames depend on wrapper version), plus logs/directory-provisioning-service.log. Wrapper errors can occur before the application log is created. Missing env substitutions, incorrect keystore passwords, unreadable files, wrong Java path and occupied HTTPS port can all cause startup failure.
 
 Reference: https://winsw.github.io/v2/doc/installation/ and https://github.com/winsw/winsw/blob/v3/docs/xml-config-file.md . Match documentation to your chosen WinSW version.
+
+Uninstall instructions for both platforms: docs/uninstall.md in the distribution. Service removal retains configuration, certificates and logs unless explicitly purged.

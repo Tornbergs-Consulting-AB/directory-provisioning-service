@@ -1,69 +1,42 @@
-# Directory Provisioning Service — 0.5.0
+# Directory Provisioning Service — 1.0.0
 
-Java 21 / Quarkus / UnboundID LDAPS service. Implements add/remove direct AD group membership using DN or AD objectGUID identifiers.
+Java service receiving HTTPS provisioning requests and updating direct Active Directory group membership over LDAPS. Runs on Linux and Windows. Identifies users/groups by DN or canonical AD objectGUID; GUID lookup resolves their current DNs before changing one member value.
 
-## Quick start from this archive
+## Release scope
 
-A prebuilt distribution is included at `dist/quarkus-app`, compiled and tested using Java 17-compatible bytecode. Run it using your Java 21. Set up HTTPS and the LDAP truststore first, then run `java -jar dist/quarkus-app/quarkus-run.jar` from the project root. Maven rebuilds use Java 21 by default.
+- POST `/api/v1/provisioning`: ADD_PERMISSION_TO_USER, REMOVE_ACCOUNT_PERMISSION and REMOVE_PERMISSION_ASSIGNMENT.
+- Already present/absent direct membership returns HTTP 200 with an UNCHANGED outcome.
+- GET on the same endpoint tests LDAP TLS and caller-supplied AD credentials without modifying objects.
+- GET `/health` reports application version/liveness; it does not bind to AD.
+- One explicitly configured logical target and one writable DC. The single-DC limitation is accepted for 1.0.0; automatic failover is not implemented.
+- No AD password stored: Basic credentials are supplied by IG for each request, over HTTPS, and used for the LDAPS bind. An allowed bind DN restricts the accepted principal; AD ACLs authorize directory changes.
 
-## Build
+## Install and configure
 
-```powershell
-mvn clean verify
-```
+The prebuilt distribution is `dist/quarkus-app`; copy the ENTIRE directory, including lib/app/quarkus. It was built with Java 17-compatible bytecode; run it on your approved Java 21. Source builds target Java 21 by default (`mvn clean verify`).
 
-Or the same command in a Linux shell. The built distribution is the **entire** `target/quarkus-app` directory. Preserve its `lib`, `app` and `quarkus` subdirectories; do not copy only quarkus-run.jar.
+Copy `examples/service-config.properties` to `config/application.properties` relative to the service working directory and replace every placeholder. Target, LDAP hostname/port, search base and allowed bind DN have no bundled defaults. Configure the HTTPS server keystore separately from LDAP trust. Keep certificates/passwords outside Git. The JSON `target` must exactly match `dps.target-name`; the GUID search base must encompass the current and possible new locations of user/group objects. AD ACLs remain the authorization boundary.
 
-## Configure and run
-
-1. Copy `examples/service-config.properties` to `config/application.properties`.
-2. Place your existing LDAP truststore at `config/certs/ldap-truststore.p12`, or change its path.
-3. Configure a separate HTTPS server PKCS12 keystore containing a private key and a certificate trusted by IG. See [lab setup](docs/demo-setup.md).
-4. Set `DPS_TRUSTSTORE_PASSWORD` and `DPS_HTTPS_KEYSTORE_PASSWORD` securely on the service host. AD credentials are not configured here.
-5. From the project root run:
-
-```powershell
-java -jar target/quarkus-app/quarkus-run.jar
-```
-
-Linux uses the same command. External `config/application.properties` is loaded relative to the current working directory. Relative certificate/log paths are also relative to that directory.
-
-GET `/api/v1/provisioning` performs a TLS LDAP connection and bind without changing any objects; it accepts the same Basic credentials as POST. This supports GET-based connection tests.
-
-Health: `https://<service-host>:8443/health`. It checks only the application; it does not bind to AD or assert LDAP readiness.
-
-## Test
-
-See [DEMO setup and membership tests](docs/demo-setup.md). Use a LAB user/group and supplied credentials. No arbitrary LDAP URL is accepted. Allowed bind DN is compared as an LDAP DN, not as an arbitrary string. Configure the delegated service account explicitly; AD ACLs control what it can change.
-
-Supports one explicitly configured target. `dps.search-base` scopes subtree GUID searches; DN operations read the supplied DNs directly. It is **not** an authorization boundary.
+- Linux installer and instructions: [deployment/linux/README.md](deployment/linux/README.md).
+- Linux systemd and Windows WinSW service setup: [docs/operations.md](docs/operations.md).
+- Windows password setup: [deployment/windows/password-setup.md](deployment/windows/password-setup.md).
+- Both-platform uninstall: [docs/uninstall.md](docs/uninstall.md).
+- Upgrade/rollback and known limits: [docs/release-1.0.0.md](docs/release-1.0.0.md).
 
 ## IG integration
 
-POST `/api/v1/provisioning` over HTTPS; Basic credentials are passed to AD. Use `scripts/ig-request.js` for the body and `scripts/ig-headers.js` for correlation. Map `fulfillmentId` and `comment` from response JSON. All real requests require `changeItemId`.
+Use `scripts/ig-request-guid.js` when accountProfile.accountId and permissionProfile.permissionId contain canonical AD objectGUID values. Use `scripts/ig-request.js` for DN references from accountProvId/permProvId. `scripts/ig-headers.js` adds change-item correlation. Scripts use the example target DEMO; update it to your configured label. Preserve account selection/context; do not substitute the identity identifier for an account identifier. Sub-applications that omit account context remain an integration limitation.
 
-Observed IG contract: 200 -> COMPLETED/FULFILLED and response comment mapped; 400/503 -> RETRY/PENDING with IG's generic error; single-item retry dispatches again after correcting the endpoint. Service logs are the detailed failure evidence.
+Configure connection-test and fulfillment paths as `/api/v1/provisioning`. Map response fulfillmentId and comment in IG. Observed IG behavior: 200 means fulfilled/pending collection verification; 400/503 means RETRY with a generic IG error. Correlated service logs provide failure detail. changeItemId is included in the response/comment; it is not a persistent deduplication key or execution ledger.
 
-Subordinate applications with missing account context remain unresolved. The request script deliberately fails if accountProvId is missing. Do not use an identity DN as an unverified account fallback.
+## Diagnostics and validation
 
-## Probe
+INFO logs show request/change item, operation, result and timing. DEBUG shows identifier type and resolved DN. To enable redacted incoming JSON diagnostics, set `dps.log-request-payload=true` AND application category DEBUG/TRACE. Body logging is disabled by default. Known secret fields are redacted, headers are not captured, and malformed JSON is omitted with its character count. DN/GUID values and unknown fields can appear; restrict log access. See [default review and diagnostic limits](docs/upgrade-0.5.0.md).
 
-Original standalone probe remains in `dist/response-probe.jar` and can still run separately. The Quarkus probe paths `/test/responses/<scenario>` are disabled by default. Enable `dps.probe-enabled=true` only for isolated synthetic tests. GET returns a connection-test response while enabled. POST response comments identify the change item and say SIMULATED. Credentials on probe paths are syntax-checked only, not authenticated against AD.
+The user accepted the lab pilot and validated Linux/Windows services, Linux installer, real AD GUID moves, idempotency and IG collection/publication verification. See [docs/validation.md](docs/validation.md) for local tests and evidence limits. `python3 scripts/verify_packaged_diagnostics.py` checks local packaged HTTPS diagnostics after a Maven build; no AD writes or real credentials are used.
 
-Original `scripts/smoke_test.py` tests the **old standalone probe**, not the new LDAP application. Run Maven tests for the new application.
+## Operational limits
 
-## Current limits
+No DC failover, multi-target routing, user/account creation, durable ledger, credential caching or automatic write replay. All steps for a request use one caller-bound LDAP connection, closed afterward. LDAP referrals are not followed. Concurrent moves or unknown write outcomes may require reconciliation/retry. IG HTTP timeout must cover cumulative LDAP steps; initial recommendation is 60 seconds with default 5-second connect/operation timeouts.
 
-No failover, durable request ledger, credential caching, or automatic write retries. Each request opens and closes its own TLS LDAP connection. Operation timeouts are 5 seconds each, connection timeout 5 seconds; set IG HTTP timeout above the cumulative steps (suggest 60 seconds for initial testing). Repeat operations converge on requested membership state; changeItemId alone is not a deduplication key.
-
-TLS failures reject the request; never enable trust-all. LDAP referrals are not followed. Logs never intentionally include Authorization headers, passwords, payloads or raw LDAP exception messages. Keep third-party protocol loggers at INFO even when enabling application DEBUG/TRACE.
-
-Existing project initialization instructions apply. No GitHub repository has been created by this package, and no license has been selected.
-
-## Operations and production pilot
-
-See [operations](docs/operations.md) for startup validation, diagnostics, Linux systemd and Windows WinSW templates, upgrade/rollback and certificate renewal. See [pilot acceptance checks](docs/pilot-validation.md). Production startup requires HTTPS with HTTP disabled and a loadable LDAP truststore. This release does not add multi-target support or DC failover.
-
-## 0.5.0 changes
-
-All directory connection/identity settings are mandatory external configuration. See [upgrade and default review](docs/upgrade-0.5.0.md). Optional redacted incoming JSON diagnostics work at DEBUG/TRACE with dps.log-request-payload=true. The user accepted the 0.4.0 lab pilot; repeat startup and a fulfillment after this upgrade.
+Probe endpoints are disabled by default. The historical standalone response probe and its smoke test are development tools, not production LDAP validation. No production secrets or certificates are included. This package does not create a GitHub repository; no project license has been selected. Preserve dependency license notices when redistributing.
