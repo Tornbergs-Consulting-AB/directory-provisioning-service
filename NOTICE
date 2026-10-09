@@ -1,0 +1,12 @@
+Directory Provisioning Service
+Copyright 2026 Marcus Tornberg
+
+Project source, scripts, deployment templates and documentation are licensed
+under the Apache License, Version 2.0. See LICENSE.
+
+Bundled third-party components retain their own copyrights and licences.
+See THIRD_PARTY_NOTICES.md and third-party/ for the component inventory,
+original licence/notice texts and corresponding sources.
+
+Java and WinSW are separately installed prerequisites and are not bundled.
+References to third-party products do not imply endorsement or affiliation.

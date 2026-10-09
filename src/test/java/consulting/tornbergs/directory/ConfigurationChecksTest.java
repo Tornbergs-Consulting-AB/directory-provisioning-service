@@ -1,3 +1,5 @@
+// Copyright 2026 Marcus Tornberg
+// SPDX-License-Identifier: Apache-2.0
 package consulting.tornbergs.directory;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,27 +1,27 @@
 # Release 1.0.0 — 2026-10-09
 
-First stable release of Directory Provisioning Service. Same membership behavior and request/response contract as 0.5.0; no migration of AD data or IG payloads is required. Single target and single DC are explicitly accepted limitations. Multi-DC failover is deferred until a suitable test environment is available.
+First stable release of Directory Provisioning Service. Provides DN/GUID direct membership operations, authenticated connection testing, mandatory external directory settings, TLS validation, idempotent results, correlated logs, optional redacted JSON diagnostics, Linux installation and Windows service templates.
 
-Includes DN/GUID membership operations; authenticated connection testing; mandatory external target/LDAP/bind configuration; TLS trust/hostname validation; idempotent direct membership updates; outcome/correlation logs; optional redacted JSON diagnostics; Linux installer/systemd unit; Windows WinSW template; upgrade/rollback/uninstall and pilot acceptance documentation.
+The project is licensed under Apache-2.0. Java 21 and WinSW are separately installed prerequisites. The distribution includes third-party notices, a runtime component inventory and corresponding sources for the Eclipse-licensed components. Documentation describes the current release; earlier upgrade notes and experiment instructions have been consolidated.
 
-## Upgrade from 0.5.0
+## Install or replace an existing distribution
 
-1. Stop the OS service. Preserve config/application.properties, certificates, secret configuration and logs.
-2. Back up the COMPLETE old quarkus-app directory.
-3. Replace it with dist/quarkus-app from this archive. Do not merge JAR versions.
-4. Start the OS service. Check `/health` returns version `1.0.0`.
-5. Run the authenticated IG connection test and one designated fulfillment; verify the intended AD state and subsequent collection/publication verification.
+For a fresh Linux installation use [the installer](../deployment/linux/README.md). Windows service setup is in [operations](operations.md). Prepare [configuration](configuration.md) and certificates before startup.
 
-No changes to the endpoint, IG scripts, service registration or configuration names are required. Upgrading from older releases requires the five explicit settings in upgrade-0.5.0.md. Rollback: stop, restore the complete old distribution and any corresponding config changes, restart. Software rollback does not undo AD modifications.
+For an existing deployment:
 
-## Release evidence
+1. Stop the OS service. Preserve `config/application.properties`, certificates, protected secret configuration and logs.
+2. Back up the COMPLETE previous `quarkus-app` directory.
+3. Confirm the five required external settings are present: `dps.target-name`, `dps.ldap-host`, `dps.ldap-port`, `dps.search-base` and `dps.allowed-bind-dn`. Retain the HTTPS/LDAP trust settings. Ensure IG uses `/api/v1/provisioning` and the intended DN/GUID request script.
+4. Replace the complete runtime with `dist/quarkus-app` from this archive. Never merge JAR versions. Keep `LICENSE`, `NOTICE`, `THIRD_PARTY_NOTICES.md` and `third-party/` available with any binary redistribution; the Linux installer handles these for this release layout.
+5. Start the service. Check `/health` reports `1.0.0`, run the authenticated connection test, then one designated fulfillment. Check direct AD membership and subsequent IG collection/publication verification.
 
-The user reports pilot-validation tests passed, GUID-based user/group moves without recollection, Linux and Windows service deployment, fresh Linux installer, and IG verification after collection/publication. The 0.5.0 packaged request diagnostics worked on the Windows lab host. Local checks cover directory semantics, GUID byte encoding, configuration validation, redaction and HTTP contracts. This is user-reported AD/OS evidence; no independent real AD test was performed in the build environment.
+Rollback: stop, restore the previous complete distribution and its corresponding configuration, restart and test. Rolling back software does not undo AD modifications. Keep deployment evidence with the exact archive checksum: documentation/licensing packaging can change while the application version remains 1.0.0 during preparation for initial public publication.
 
-The prebuilt runtime uses Java 17-compatible bytecode, suitable for the user's Java 21 hosts; Maven source builds target Java 21 by default. CHECKSUMS.sha256 covers the prebuilt runtime files. The archive SHA-256 is provided with delivery. Checksums detect byte changes; they are not a digital signature.
+## Verification and accepted limits
 
-## Accepted limits
+The user accepted the lab pilot on 2026-10-09 and confirmed Linux/Windows services, the fresh Linux installer, real AD add/remove with idempotent repeats, GUID-based object moves without recollection and IG verification after collection/publication. See [validation](validation.md) for local checks and evidence limits.
 
-One writable DC for one configured logical target; outages produce failure/retry until that DC recovers. No automatic mid-operation write replay or guarantee of immediate cross-replica consistency. Sub-application account context requires separate IG configuration work. User creation, attribute updates and other fulfillment operations are outside this release. No external repository release/tag or Windows installer executable is published by this archive.
+One writable DC for one logical target. No automatic failover, write replay, durable ledger, user creation or attribute updates. Sub-application account context needs separate IG integration work. No external repository/tag or public release is created by this archive.
 
-To verify extracted runtime files on Linux, run `sha256sum -c CHECKSUMS.sha256` from the extracted project root. On Windows, Get-FileHash -Algorithm SHA256 can compare individual files with the manifest.
+The prebuilt runtime uses Java 17-compatible bytecode; run it on approved Java 21 hosts. Source builds target Java 21 by default. `CHECKSUMS.sha256` covers distribution files; verify with `sha256sum -c CHECKSUMS.sha256` from the project root. On Windows compare `Get-FileHash -Algorithm SHA256` with the manifest. Checksums detect byte changes and are not digital signatures.

@@ -10,7 +10,7 @@ INFO success logs include correlation ID, change item, request type, outcome and
 quarkus.log.category."consulting.tornbergs.directory".level=DEBUG
 ```
 
-Payload logging is disabled by default. 0.5.0 adds opt-in redacted JSON diagnostics; see upgrade-0.5.0.md for configuration and redaction limits. Authentication headers and raw LDAP exceptions are not logged. Resolved DNs are personal/organizational data: restrict access to logs. Default file rotation: logs/directory-provisioning-service.log, 10 MB, five backups. Protect both console and file logs. /health reports process availability, not LDAP readiness; authenticated GET /api/v1/provisioning checks TLS and bind.
+Payload logging is disabled by default. See [configuration](configuration.md) for opt-in redacted JSON diagnostics and redaction limits. Authentication headers and raw LDAP exceptions are not logged. Resolved DNs are personal/organizational data: restrict access to logs. Default file rotation: logs/directory-provisioning-service.log, 10 MB, five backups. Protect both console and file logs. /health reports process availability, not LDAP readiness; authenticated GET /api/v1/provisioning checks TLS and bind.
 
 ## Linux / RHEL systemd
 
@@ -24,7 +24,7 @@ install -d -m 0700 -o dps -g dps /opt/directory-provisioning-service/logs
 install -d -m 0700 -o root -g root /etc/directory-provisioning-service
 ```
 
-Copy the complete dist/quarkus-app directory under /opt/directory-provisioning-service. Copy your existing configuration and certificates to config/application.properties and config/certs. Keep binaries/configuration/certificates root-owned, group dps, directories 0750 and files 0640; dps needs read access only. Do not put the application under /root. Resolve Java's actual executable path and update ExecStart in the unit if /usr/bin/java is not the intended Java 21.
+Copy the complete dist/quarkus-app directory under /opt/directory-provisioning-service. Retain LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and third-party/ alongside it for licence/source availability. Copy your existing configuration and certificates to config/application.properties and config/certs. Keep binaries/configuration/certificates root-owned, group dps, directories 0750 and files 0640; dps needs read access only. Do not put the application under /root. Resolve Java's actual executable path and update ExecStart in the unit if /usr/bin/java is not the intended Java 21.
 
 Create /etc/directory-provisioning-service/secrets.env using a root editor, mode 0600, containing the HTTPS keystore and LDAP truststore passwords (not AD credentials):
 
@@ -48,9 +48,9 @@ Permit incoming HTTPS only from required clients through host/network firewall. 
 
 ## Windows service
 
-Use a pinned approved stable WinSW release from https://github.com/winsw/winsw/releases (wrapper not bundled). Follow the bundled executable/XML installation mode: place the renamed wrapper directory-provisioning-service.exe alongside directory-provisioning-service.xml in C:\Services\directory-provisioning-service. Copy quarkus-app, config and certificates there. Edit the XML executable to your actual Java 21 path.
+Use a pinned approved stable WinSW release from https://github.com/winsw/winsw/releases (wrapper not bundled). Follow the bundled executable/XML installation mode: place the renamed wrapper directory-provisioning-service.exe alongside directory-provisioning-service.xml in C:\Services\directory-provisioning-service. Copy quarkus-app, config and certificates there. Retain LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and third-party/ from the release alongside the runtime. Edit the XML executable to your actual Java 21 path.
 
-Use an approved dedicated local/domain OS service account with Log on as a service, read access to binaries/config/certificates and Modify access only to logs. This OS identity is separate from the AD credentials supplied per request. Install the wrapper, then set its Log On account in services.msc before starting; the wrapper defaults to LocalSystem and should not run that way for the pilot. Use services.msc rather than putting account passwords on the command line.
+Use an approved dedicated local/domain OS service account with Log on as a service, read access to binaries/config/certificates and Modify access only to logs. This OS identity is separate from the AD credentials supplied per request. Install the wrapper, then set its Log On account in services.msc before starting; the wrapper defaults to LocalSystem and should run under the dedicated account for production. Use services.msc rather than putting account passwords on the command line.
 
 Provide DPS_HTTPS_KEYSTORE_PASSWORD and DPS_TRUSTSTORE_PASSWORD through your approved deployment mechanism. If using machine environment variables, remember they are not a vault and restart the service host as needed so the service sees them; test the actual service environment. Alternatively use protected local properties with literal keystore passwords, outside Git, readable only by administrators and the service account. Do not store AD credentials in either location.
 
@@ -64,7 +64,7 @@ From an elevated terminal in the service directory:
 .\directory-provisioning-service.exe stop
 ```
 
-Validate this template on Windows; Windows service installation has not been executed here. For wrapper-specific options consult https://winsw.github.io/v2/doc/installation/ and the documentation for your pinned release.
+Windows service deployment was validated by the user in the lab; this build environment did not independently execute Windows installation. For wrapper-specific options consult https://winsw.github.io/v2/doc/installation/ and the documentation for your pinned release.
 
 ## Upgrade / rollback
 
@@ -74,7 +74,7 @@ Stop the service before replacing the entire quarkus-app directory. Back up the 
 
 Monitor process health, service restart failures, 401/403/5xx rates and request duration. LDAP availability requires an authenticated synthetic check using your credential management policy. Renew the HTTPS certificate/private key in the service keystore, then restart and test IG trust. Renew DC/CA trust before expiry or issuing-CA changes, restart and test authenticated LDAP bind. Use issuing CA trust where appropriate; preserve hostname verification. Record expiry and renewal ownership.
 
-## Remaining production decisions
+## Deployment limits
 
 Single target and single DC remain supported; failover and multiple targets are not implemented. Sub-application account context is unresolved. No persistent execution ledger or automatic write retry. AD ACLs are the authorization boundary; search-base scopes GUID discovery. Both objects must remain visible under that base after moves. HTTPS terminates directly at the service. Restrict request volume and choose timeout/concurrency values for your environment.
 
@@ -83,6 +83,6 @@ Single target and single DC remain supported; failover and multiple targets are 
 - systemd execution/sandbox options: https://github.com/systemd/systemd/blob/main/man/systemd.exec.xml
 - WinSW installation: https://winsw.github.io/v2/doc/installation/
 
-Mandatory external directory settings and the full default review are in upgrade-0.5.0.md. Existing deployments must set target, LDAP host/port, search base and allowed bind DN explicitly.
+Mandatory external directory settings and the full default review are in [configuration](configuration.md). Existing deployments must set target, LDAP host/port, search base and allowed bind DN explicitly.
 
 Uninstall instructions for both platforms: docs/uninstall.md in the distribution. Service removal retains configuration, certificates and logs unless explicitly purged.

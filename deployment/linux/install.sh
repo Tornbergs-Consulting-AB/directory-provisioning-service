@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2026 Marcus Tornberg
+# SPDX-License-Identifier: Apache-2.0
 # Fresh installation only. Existing installations are never overwritten.
 set -euo pipefail
 set +x
@@ -30,6 +32,11 @@ app=/opt/directory-provisioning-service
 secrets=/etc/directory-provisioning-service
 unit=/etc/systemd/system/directory-provisioning.service
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+release_root=$(cd -- "$script_dir/../.." && pwd)
+for legal_file in LICENSE NOTICE THIRD_PARTY_NOTICES.md; do
+ [[ -f $release_root/$legal_file ]] || { echo 'Use the complete release layout with its licence materials.' >&2;exit 1; }
+done
+[[ -d $release_root/third-party ]] || { echo 'Third-party licence/source materials are missing.' >&2;exit 1; }
 [[ -f $script_dir/directory-provisioning.service ]] || { echo 'Place installer alongside supplied systemd unit.' >&2;exit 1; }
 [[ ! -e $app && ! -e $secrets && ! -e $unit ]] || { echo 'Existing installation detected; nothing changed. Use documented upgrade steps.' >&2;exit 1; }
 [[ -f $distribution/quarkus-run.jar && -d $distribution/lib && -f $config && -d $certs && $java == /* && -x $java ]] || { usage;exit 2; }
@@ -53,6 +60,13 @@ install -d -m 0750 -o root -g dps "$app" "$app/config" "$app/config/certs"
 install -d -m 0700 -o dps -g dps "$app/logs"
 install -d -m 0700 -o root -g root "$secrets"
 cp -R "$distribution" "$app/quarkus-app"
+for legal_file in LICENSE NOTICE THIRD_PARTY_NOTICES.md; do
+ install -m 0640 -o root -g dps "$release_root/$legal_file" "$app/$legal_file"
+done
+cp -R "$release_root/third-party" "$app/third-party"
+chown -R root:dps "$app/third-party"
+find "$app/third-party" -type d -exec chmod 0750 {} +
+find "$app/third-party" -type f -exec chmod 0640 {} +
 cp -R "$certs/." "$app/config/certs/"
 install -m 0640 -o root -g dps "$config" "$app/config/application.properties"
 chown -R root:dps "$app/quarkus-app" "$app/config"

@@ -1,3 +1,5 @@
+// Copyright 2026 Marcus Tornberg
+// SPDX-License-Identifier: Apache-2.0
 package consulting.tornbergs.directory;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;

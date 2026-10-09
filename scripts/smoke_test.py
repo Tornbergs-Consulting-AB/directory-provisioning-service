@@ -1,3 +1,5 @@
+# Copyright 2026 Marcus Tornberg
+# SPDX-License-Identifier: Apache-2.0
 """Compile/start the DEV probe and test its observable HTTP contract."""
 import base64, json, os, socket, subprocess, tempfile, time, urllib.request, urllib.error
 from pathlib import Path

@@ -1,9 +1,17 @@
-# Version 1.0.0 validation
+# Validation — 1.0.0
 
-The user accepted the 0.4.0 pilot on 2026-10-09 and reports all pilot-validation checks passed. Linux systemd and Windows WinSW operation, GUID resolution after user/group moves and IG fulfillment verification after publication are confirmed by the user. No independent real AD validation was run in this environment. The user confirmed the fresh Linux installer worked without issues on 2026-10-09.
+## Local checks
 
-0.5.0 retains directory operations and adds mandatory external directory settings and opt-in JSON diagnostics. 1.0.0 retains the tested 0.5.0 behavior; only version metadata and release documentation change. The local build uses Java 17 compatibility; the user tested earlier releases on Java 21.
+`mvn clean verify` runs 33 tests covering directory semantics, GUID byte encoding, request/authentication validation, configuration checks and payload redaction. The prebuilt distribution uses Java 17-compatible bytecode; source builds default to Java 21.
 
-Verification completed: 33 Maven tests passed. Packaged HTTPS checks passed with body logging disabled/enabled at TRACE; unknown fields remained visible, invalid JSON/type errors returned structured 400 responses, and password/header sentinels were absent from console and file logs. Each missing required directory setting independently prevented packaged startup. No AD writes were performed in these local diagnostic checks.
+`python3 scripts/verify_packaged_diagnostics.py` starts the packaged runtime with temporary localhost HTTPS certificates. It checks health/version, JSON diagnostics disabled/enabled at TRACE, visible unexpected fields/type errors, malformed-body omission, credential sentinel redaction in console/file logs, and failure to start when each required directory setting is absent. It performs no AD writes and uses no real credentials.
 
-1.0.0 release verification: 33 Maven tests passed; packaged HTTPS startup/health returned version 1.0.0; payload opt-in/redaction/invalid-body checks and each missing directory setting check passed. Linux installer syntax and Windows service XML parsing passed. No new AD behavior was introduced after the accepted pilot.
+`python3 scripts/package_release.py` checks runtime JAR integrity, dependency inventory coverage, retained licence/source files, Markdown links, shell syntax and Windows XML, then writes the release archive and checksums. Dependency changes require regenerating/reviewing third-party data before packaging.
+
+Local Maven and packaged HTTPS checks passed for this release. Linux installer syntax and Windows XML parsing passed. These checks cannot establish real AD or OS service behavior.
+
+## Pilot evidence
+
+The user accepted the pilot on 2026-10-09 and reported the [pilot validation checklist](pilot-validation.md) passed. Reported checks include Linux and Windows services, fresh Linux installation, real AD add/repeat/remove/repeat, GUID resolution after moving both objects without recollection, IG fulfillment and verification after collection/publication, and JSON diagnostics on Windows.
+
+Those AD/OS checks were performed by the user in the lab, not independently in the build environment. Repeat designated-object checks after configuration, directory, certificate or runtime changes. Preserve safe responses, correlated logs, direct membership observations and IG verification evidence.

@@ -31,7 +31,7 @@ Configure connection-test and fulfillment paths as `/api/v1/provisioning`. Map r
 
 ## Diagnostics and validation
 
-INFO logs show request/change item, operation, result and timing. DEBUG shows identifier type and resolved DN. To enable redacted incoming JSON diagnostics, set `dps.log-request-payload=true` AND application category DEBUG/TRACE. Body logging is disabled by default. Known secret fields are redacted, headers are not captured, and malformed JSON is omitted with its character count. DN/GUID values and unknown fields can appear; restrict log access. See [default review and diagnostic limits](docs/upgrade-0.5.0.md).
+INFO logs show request/change item, operation, result and timing. DEBUG shows identifier type and resolved DN. To enable redacted incoming JSON diagnostics, set `dps.log-request-payload=true` AND application category DEBUG/TRACE. Body logging is disabled by default. Known secret fields are redacted, headers are not captured, and malformed JSON is omitted with its character count. DN/GUID values and unknown fields can appear; restrict log access. See [configuration and diagnostic limits](docs/configuration.md).
 
 The user accepted the lab pilot and validated Linux/Windows services, Linux installer, real AD GUID moves, idempotency and IG collection/publication verification. See [docs/validation.md](docs/validation.md) for local tests and evidence limits. `python3 scripts/verify_packaged_diagnostics.py` checks local packaged HTTPS diagnostics after a Maven build; no AD writes or real credentials are used.
 
@@ -39,4 +39,10 @@ The user accepted the lab pilot and validated Linux/Windows services, Linux inst
 
 No DC failover, multi-target routing, user/account creation, durable ledger, credential caching or automatic write replay. All steps for a request use one caller-bound LDAP connection, closed afterward. LDAP referrals are not followed. Concurrent moves or unknown write outcomes may require reconciliation/retry. IG HTTP timeout must cover cumulative LDAP steps; initial recommendation is 60 seconds with default 5-second connect/operation timeouts.
 
-Probe endpoints are disabled by default. The historical standalone response probe and its smoke test are development tools, not production LDAP validation. No production secrets or certificates are included. This package does not create a GitHub repository; no project license has been selected. Preserve dependency license notices when redistributing.
+Probe endpoints are disabled by default. No production secrets or certificates are included.
+
+## Documentation and licensing
+
+Start with the [1.0.0 documentation index](docs/README.md). Project source, scripts, deployment templates and documentation are licensed under [Apache-2.0](LICENSE), copyright 2026 Marcus Tornberg. Third-party components keep their own licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third-party/`. Java 21 and WinSW are separately installed prerequisites and are not bundled.
+
+See [SUPPORT.md](SUPPORT.md) for best-effort maintenance and customer ownership of deployment, [CONTRIBUTING.md](CONTRIBUTING.md) for contributions, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [distribution instructions](docs/distribution.md) for release preparation. This archive does not publish an external repository.

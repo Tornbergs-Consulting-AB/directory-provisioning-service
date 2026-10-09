@@ -1,58 +1,29 @@
-# Design decisions
+# Design — 1.0.0
 
-## Approved scope
+## Request execution
 
-- REST input, LDAP output; Java on Windows and Linux.
-- First directory operations: add/remove a direct group member. No account creation yet.
-- Basic header carries AD credentials. HTTPS required for real credentials. No stored AD passwords.
-- Configured target names map to approved LDAP endpoints, search base(s), CA truststore and allowed bind principals. Search bases locate objects; they are not authorization container restrictions.
-- AD ACLs are the primary authorization restrictions; no extra user/group container allowlist.
-- LDAPS, certificate chain and hostname validation. No automatic referral following.
-- One bound connection per request initially; close it after completion. No cross-principal connection reuse.
-- Modify only one member value. Never replace the entire member attribute.
-- GUID preferred; DN accepted. Exactly one identifier per object. AD GUID byte encoding requires real AD tests.
-- Already-member add / absent-member removal return 200 UNCHANGED with a descriptive comment.
-- Concurrent changes: confirm the final direct-membership state for already-present/absent LDAP responses. Other LDAP errors remain errors.
-- Missing object is distinct from absent membership. Reject missing/ambiguous identifiers and unsupported operations.
-- Configurable timeouts and bounded concurrency. No blind automatic replay after unknown write outcome; re-read membership and safely converge on retry.
-- Correlation IDs and structured diagnostics; redact credentials at every level; file rotation.
+A Quarkus Java service receives HTTPS requests and uses the UnboundID LDAP SDK to update direct Active Directory group membership over LDAPS. Linux and Windows use the same application. Java 21 and the Windows service wrapper are installed separately.
 
-## Proposed production contract (not yet implemented)
+`POST /api/v1/provisioning` accepts one user reference, one group reference, a change item ID, a logical target and an operation. Each reference contains exactly one DN or canonical AD objectGUID. The service resolves current DNs and verifies object classes before checking/modifying membership. It never selects an account from an identity automatically; IG must supply the intended account identifier.
 
-`POST /api/v1/provisioning`, `Authorization: Basic ...`, `X-Correlation-ID: ...`.
+`ADD_PERMISSION_TO_USER` adds one `member` value. `REMOVE_ACCOUNT_PERMISSION` and `REMOVE_PERMISSION_ASSIGNMENT` remove one value. The service never replaces the full membership list. Nested membership is not considered direct membership. Already-present additions and already-absent removals succeed with an UNCHANGED response. Missing directory objects are errors.
 
-```json
-{
-  "requestId": "83",
-  "target": "ad-dev",
-  "requestType": "ADD_PERMISSION_TO_USER",
-  "user": {"guid": "5041289d-c648-4874-a038-14b01d8d7d3d"},
-  "group": {"dn": "CN=APP_DOIT,OU=Groups,DC=example,DC=com"}
-}
-```
+Membership checks and writes use the same bound connection/DC. Already-present/absent LDAP responses are reconciled with a direct-membership check; unrelated LDAP errors remain errors. Concurrent opposing requests may leave either state. Moving an object between resolution and modification may require a retry.
 
-IG ADD_PERMISSION_TO_USER -> add; REMOVE_ACCOUNT_PERMISSION and REMOVE_PERMISSION_ASSIGNMENT -> remove. GUID must be the AD objectGUID, never an IG internal identifier. LDAP filter construction must use SDK escaping and binary GUID handling.
+## Credentials and trust
 
-Success response: requestId, fulfillmentId, outcome CHANGED/UNCHANGED, machine-readable code and comment. Error response: FAILED plus code/comment. Final HTTP status mapping remains gated on IG experiments.
+IG supplies AD bind credentials in the HTTP Basic Authorization header over HTTPS. The service accepts only its configured bind DN and never stores AD passwords. Each request opens its own LDAP connection, binds as the caller, and closes the connection afterward. No credential-bearing queue, credential cache or shared authenticated connection pool is used.
 
-No durable credential-bearing request queue. Membership operations are naturally convergent; requestId is for tracing, not yet a persistent deduplication guarantee. If future provisioning operations require stronger idempotency, design a durable operation ledger separately.
+TLS validates the LDAPS certificate chain and hostname. LDAP referrals are disabled. HTTPS terminates at the service; forwarded-protocol headers do not bypass its TLS requirement. AD ACLs authorize writes. The GUID search base controls object discovery and does not impose an authorization container boundary on DN requests.
 
-## Open decisions / validation gates
+The HTTPS server keystore and LDAP truststore are separate. Their passwords are deployment secrets; they are distinct from per-request AD credentials.
 
-1. Establish IG status, comment, fulfillment ID and retry behavior for each test response.
-2. Select the account GUID source, including multi-account identities and subordinate applications. Never select an arbitrary account.
-3. Actual AD bind principal form (UPN recommended), certificate trust and service-account allowlist values.
-4. Connection/read/operation timeout values below IG HTTP timeout; writable DC/failover behavior and replication tests.
-5. Real AD tests for moved objects, ACL denial, nested membership, concurrent writes and dropped responses.
-6. Windows service wrapper, Linux systemd configuration, HTTPS server certificate and rotation.
+## Capacity, retry and diagnostics
 
-## Milestones
+Configured connect/operation timeouts and a concurrency limit bound directory work. There is no automatic write replay, durable execution ledger or persistent deduplication key. Repeat membership operations converge on the requested direct-membership state, subject to concurrent changes and directory visibility. Correlation IDs identify attempts; `fulfillmentId` identifies an IG change item and is not a stored execution receipt.
 
-1. Response probe and IG evidence.
-2. Quarkus REST contract, authentication/target config and validation.
-3. UnboundID LDAP adapter and AD integration tests.
-4. Packaging, operational logging and runbooks.
+INFO logs record outcomes and timing. DEBUG logs show identifier types and resolved DNs. Optional request JSON diagnostics parse and redact known sensitive fields before logging; headers and malformed raw bodies are not logged. Unknown JSON fields and object identifiers can still contain sensitive information. See [configuration](configuration.md).
 
-## Version 0.2 implementation
+## Supported limits
 
-DN/GUID operations implemented for one explicitly configured target. changeItemId is mandatory and echoed in the response/comment. RequestId is correlation; fulfillmentId is iga-<changeItemId>, not a durable execution receipt. HTTPS required directly; no trust of forwarded-proto headers. Search base scopes GUID lookup. DN-based real AD add/repeat/remove/repeat validated by the user; User/group GUID moves, Linux and Windows services, and IG collection verification were validated by the user. Pilot accepted by the user on 2026-10-09. Probe disabled by default.
+Version 1.0.0 supports one logical target and one writable DC. Outages require recovery of that DC and a retry. User creation, deletion, attribute updates, multi-target routing and DC failover are outside this release. IG sub-applications that omit account context require separate integration work. See [API and IG integration](api-and-ig.md) and [directory target](directory-target.md).

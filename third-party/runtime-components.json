@@ -1,0 +1,2222 @@
+{
+  "components": [
+    {
+      "coordinates": "io.quarkus:quarkus-bootstrap-runner:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-bootstrap-runner@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-bootstrap-runner__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.quarkus.quarkus-bootstrap-runner-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b1dabf89f490c31d88894741cd2717f641712300bd8835232eeff9a233fd42f6",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-bootstrap-runner/3.27.6/quarkus-bootstrap-runner-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-classloader-commons:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-classloader-commons@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-classloader-commons__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.quarkus.quarkus-classloader-commons-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "28c487e19109d428f11a0b9a373780b43d1b3dc00324b8ed9dcc4924f6366013",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-classloader-commons/3.27.6/quarkus-classloader-commons-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-development-mode-spi:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-development-mode-spi@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-development-mode-spi__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.quarkus.quarkus-development-mode-spi-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "97aede70591aecd8214f932355a9279f8b49fae2c18e0f8ff138db07ac4a4e89",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-development-mode-spi/3.27.6/quarkus-development-mode-spi-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-vertx-latebound-mdc-provider:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-vertx-latebound-mdc-provider@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-vertx-latebound-mdc-provider__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.quarkus.quarkus-vertx-latebound-mdc-provider-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "8cca496e2fbf8841be4c09dacd4ecd1cdc5d91f2cb3b2f9f10b4e58d4c0b5648",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-latebound-mdc-provider/3.27.6/quarkus-vertx-latebound-mdc-provider-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-constraint:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-constraint@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-constraint-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "c75d6fcecb867480106ed16607f03930788838c4fd959d11e05a916e5eae3a01",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-constraint/2.13.9/smallrye-common-constraint-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-cpu:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-cpu@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-cpu-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7ecaf8b4f048afb8a732fd798be4de29a33d9e01b58adce90fa22dfcedb6ef7c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-cpu/2.13.9/smallrye-common-cpu-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-expression:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-expression@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-expression-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "45f4f698e5f1daf239313616ede8faa0f1682dcb19b2ba6ae5750a6c1337d834",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-expression/2.13.9/smallrye-common-expression-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-function:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-function@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-function-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7f1fdd06f9201b00420569dbda7f5fc8c16b8ebc9e9c688f372709834804e3ca",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-function/2.13.9/smallrye-common-function-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-io:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-io@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-io-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "6132512fa1c32ea63b9f0dacb5fb85f5d418f25b7087d88db6ed294560a888eb",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-io/2.13.9/smallrye-common-io-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-net:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-net@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-net-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "5825dbae884cb9cbde7a5e93025fd29caf3d0c4848a98b2fe049129e6b9587a7",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-net/2.13.9/smallrye-common-net-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-os:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-os@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-os-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "8de1846ca0674a299cd6c37f66914ce72569019b5706267aa3963ce68fd87b36",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-os/2.13.9/smallrye-common-os-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-ref:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-ref@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/io.smallrye.common.smallrye-common-ref-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "72e147f76dc3a2d7aac9f18b812708390d1d8cf768ad32f556852068616575d7",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-ref/2.13.9/smallrye-common-ref-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "org.crac:crac:1.5.0",
+      "declaredLicences": [
+        {
+          "name": "BSD-2-Clause",
+          "url": "https://opensource.org/licenses/BSD-2-Clause"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/crac/org.crac",
+      "purl": "pkg:maven/org.crac/crac@1.5.0",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/org.crac.crac-1.5.0.jar",
+      "selectedLicence": "BSD-2-Clause",
+      "sha256": "f4426e1641c8f0fa2f025a4cd7c40c285abaf265930e6717adfcaef03d034850",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/crac/crac/1.5.0/crac-1.5.0-sources.jar"
+    },
+    {
+      "coordinates": "org.jboss.logging:jboss-logging:3.6.1.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "http://www.jboss.org",
+      "purl": "pkg:maven/org.jboss.logging/jboss-logging@3.6.1.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/org.jboss.logging.jboss-logging-3.6.1.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "5e08a4b092dc85b337f0910a740571d8720cfa565fabd880a8caf94a657ca416",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final-sources.jar"
+    },
+    {
+      "coordinates": "org.jboss.logmanager:jboss-logmanager:3.1.2.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.jboss.logmanager/jboss-logmanager@3.1.2.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/boot/org.jboss.logmanager.jboss-logmanager-3.1.2.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "c1e7de682a4871a8e4eefb26adaf0fcc63cd0913543c50aa6b7f46fa5ec151fe",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jboss/logmanager/jboss-logmanager/3.1.2.Final/jboss-logmanager-3.1.2.Final-sources.jar"
+    },
+    {
+      "coordinates": "com.aayushatharva.brotli4j:brotli4j:1.23.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.aayushatharva.brotli4j/brotli4j@1.23.0",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.aayushatharva.brotli4j.brotli4j-1.23.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "5fcf13ad78d07319cc507465dcf61cbc3efee9f45c9ae1c42a9902414696bc0b",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/aayushatharva/brotli4j/brotli4j/1.23.0/brotli4j-1.23.0-sources.jar"
+    },
+    {
+      "coordinates": "com.aayushatharva.brotli4j:native-linux-x86_64:1.23.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.aayushatharva.brotli4j/native-linux-x86_64@1.23.0",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.aayushatharva.brotli4j.native-linux-x86_64-1.23.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "c504e243961c4229d8e486ca8f87b757ad9a033dda471061c0134c050ddcaa7c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/aayushatharva/brotli4j/native-linux-x86_64/1.23.0/native-linux-x86_64-1.23.0-sources.jar"
+    },
+    {
+      "coordinates": "com.aayushatharva.brotli4j:service:1.23.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.aayushatharva.brotli4j/service@1.23.0",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.aayushatharva.brotli4j.service-1.23.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7f298d44dbb7688419f0179ee1dfa0e4436633272b05d38a5faf3a2b8d08697b",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/aayushatharva/brotli4j/service/1.23.0/service-1.23.0-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.core:jackson-annotations:2.21",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/FasterXML/jackson",
+      "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.core__jackson-annotations__2.21/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-annotations__2.21/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-annotations__2.21/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-annotations__2.21/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.core.jackson-annotations-2.21.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.core:jackson-core:2.21.7",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/FasterXML/jackson-core",
+      "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.7",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/binary/META-INF/FastDoubleParser-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/binary/META-INF/FastDoubleParser-ThirdParty-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/binary/META-INF/Schubfach-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/FastDoubleParser-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/FastDoubleParser-ThirdParty-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/Schubfach-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/jackson-core-LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-core__2.21.7/source/META-INF/jackson-core-NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.core.jackson-core-2.21.7.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "8c5623b98f32d5f7e1287ff61ed50e08ab7b11381e991fff89327faabba42261",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.21.7/jackson-core-2.21.7-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.core:jackson-databind:2.21.7",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/FasterXML/jackson",
+      "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.7",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.core__jackson-databind__2.21.7/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-databind__2.21.7/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-databind__2.21.7/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.core__jackson-databind__2.21.7/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.core.jackson-databind-2.21.7.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "1290c2795e93e8a6861a6c4d9ff0d844d32f5ea178362cb2721edf5561e828b1",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.7/jackson-databind-2.21.7-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.21.7",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jdk8@2.21.7",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jdk8__2.21.7/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jdk8__2.21.7/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jdk8__2.21.7/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jdk8__2.21.7/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.datatype.jackson-datatype-jdk8-2.21.7.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b8f62f98363ed9aa259b3a479a64fcbe7e081158a8bec6733972e900d12f4e47",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.21.7/jackson-datatype-jdk8-2.21.7-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.21.7",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jsr310@2.21.7",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jsr310__2.21.7/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jsr310__2.21.7/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jsr310__2.21.7/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.datatype__jackson-datatype-jsr310__2.21.7/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.datatype.jackson-datatype-jsr310-2.21.7.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "5989b937f0aa5b6407e7a061077c9bfcac0590dc0a32e54b2fac6a3e2d49e812",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.21.7/jackson-datatype-jsr310-2.21.7-sources.jar"
+    },
+    {
+      "coordinates": "com.fasterxml.jackson.module:jackson-module-parameter-names:2.21.7",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/com.fasterxml.jackson.module/jackson-module-parameter-names@2.21.7",
+      "retainedTexts": [
+        "third-party/retained/com.fasterxml.jackson.module__jackson-module-parameter-names__2.21.7/binary/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.module__jackson-module-parameter-names__2.21.7/binary/META-INF/NOTICE",
+        "third-party/retained/com.fasterxml.jackson.module__jackson-module-parameter-names__2.21.7/source/META-INF/LICENSE",
+        "third-party/retained/com.fasterxml.jackson.module__jackson-module-parameter-names__2.21.7/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.fasterxml.jackson.module.jackson-module-parameter-names-2.21.7.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ffe66bf4bbb7b4f201aad456294312f13b3649aa392c36d95e786c910a0d513a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.21.7/jackson-module-parameter-names-2.21.7-sources.jar"
+    },
+    {
+      "coordinates": "com.unboundid:unboundid-ldapsdk:7.0.5",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        {
+          "name": "GNU General Public License version 2 (GPLv2)",
+          "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        {
+          "name": "GNU Lesser General Public License version 2.1 (LGPLv2.1)",
+          "url": "http://www.gnu.org/licenses/lgpl-2.1.html"
+        },
+        {
+          "name": "UnboundID LDAP SDK Free Use License",
+          "url": "https://docs.ldap.com/ldap-sdk/docs/LICENSE-UnboundID-LDAPSDK.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/pingidentity/ldapsdk",
+      "purl": "pkg:maven/com.unboundid/unboundid-ldapsdk@7.0.5",
+      "retainedTexts": [
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/binary/LICENSE-GPLv2.txt",
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/binary/LICENSE-LGPLv2.1.txt",
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/binary/LICENSE-UnboundID-LDAPSDK.txt",
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/binary/LICENSE.txt",
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/source/com/unboundid/ldap/sdk/extensions/NoticeOfDisconnectionExtendedResult.java",
+        "third-party/retained/com.unboundid__unboundid-ldapsdk__7.0.5/source/com/unboundid/ldap/sdk/unboundidds/extensions/PasswordPolicyStateAccountUsabilityNotice.java"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/com.unboundid.unboundid-ldapsdk-7.0.5.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "463f0ee93f8046c6f72766f111fc27b18ab4727541968b9fa72699023e1b0ff0",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/7.0.5/unboundid-ldapsdk-7.0.5-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-buffer:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-buffer@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-buffer-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "5bef3ea2b9e80c5e8d03151ca1609bd75fd1e264863bf3e2f8d538392c0f2c38",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.138.Final/netty-buffer-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "21b9b7717da9ed7034c7a9ef4fcea4a08825e8f52d775da4d898364edf99327f",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.138.Final/netty-codec-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec-dns:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec-dns@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-dns-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "715d8ba984fde2c9ffc35917c8c1dfdea6b10f0460922f4f6f587c92db8f4ef1",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.138.Final/netty-codec-dns-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec-haproxy:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec-haproxy@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-haproxy-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "56cc45103a0d24329e3065305c802360beb0c921318222142c333059421f3964",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-haproxy/4.1.138.Final/netty-codec-haproxy-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec-http:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec-http@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-http-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7d9000e53c8e37504be42b8dd7b646a7d1c73ad2cf801527fe3c6301880fe06f",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.138.Final/netty-codec-http-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec-http2:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec-http2@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-http2-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "c7521231535c252903d9e424e162f789b5b55b0b0799628ea466a9b3daf49dae",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.138.Final/netty-codec-http2-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-codec-socks:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-codec-socks@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-codec-socks-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "bc15ad96188a6eee2d0c5f7f8e443fa916fa30e74a65e220b1ac0a04574dda87",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.138.Final/netty-codec-socks-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-common:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [
+        "org.jctools:jctools-core:4.0.5"
+      ],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-common@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-common-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b4ebb8fa44cd5790731928a83fd0f25a530e41c407c093bef4a0196db30b693f",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.138.Final/netty-common-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-handler:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-handler-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a79fb814e029db17da82baea25a0340172af2c59f107fd20b394c1fa28680f21",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.138.Final/netty-handler-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-handler-proxy:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-handler-proxy@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-handler-proxy-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "fd26635e06af15b2dd3f7502a195dc19fcd451264948a8707fb26f60e4d510b9",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.138.Final/netty-handler-proxy-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-resolver:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-resolver@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-resolver-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "50c338a0e5c9997513e738f0fcb47d579a9e8852d317ba367f5d141e210187c0",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.138.Final/netty-resolver-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-resolver-dns:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-resolver-dns@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-resolver-dns-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a636815e5bcc9501a7d2c9bdba8b058811ddec5d0c76ec58fc6a165f4facf21c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.138.Final/netty-resolver-dns-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-tcnative-classes:2.0.84.Final",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-tcnative-classes@2.0.84.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-tcnative-classes-2.0.84.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7a4437abf98b0cec053af4443fe321177d2cfccfec7bcad4e7d8b75571bbec4d",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-tcnative-classes/2.0.84.Final/netty-tcnative-classes-2.0.84.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-transport:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-transport@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-transport-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "6c064c1cae4d410b920abfc07959a49db1b4778a9547614373e97d31cab0cad6",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.138.Final/netty-transport-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.netty:netty-transport-native-unix-common:4.1.138.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.netty/netty-transport-native-unix-common@4.1.138.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.netty.netty-transport-native-unix-common-4.1.138.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "8d1ada8f185d6f6da4cd79f9daeef39f1db49908cfec8bc2a1fb602458aa2341",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.138.Final/netty-transport-native-unix-common-4.1.138.Final-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.arc:arc:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.arc/arc@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.arc__arc__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.arc.arc-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "73924e3555b31a4d8c4847a125e54485cf04c852f0677da2b23a5b2a1365d82a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/arc/arc/3.27.6/arc-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-arc:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-arc@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-arc__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-arc-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "1d40156880097ab6b60e992678b4f52a625a47fa6dc821b0a373a77340b7af1a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-arc/3.27.6/quarkus-arc-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-core:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-core@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-core__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-core-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "83d29f135c6d035d212cc3a9458b0da4f5c89a843d304522998b583a3cc33786",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-core/3.27.6/quarkus-core-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-credentials:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-credentials@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-credentials__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-credentials-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "83dcdcad98674da1a045425124d278caa7ea6c96a7acb6e7ee2d0b9c7ce953df",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-credentials/3.27.6/quarkus-credentials-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-fs-util:1.1.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://quarkus.io/",
+      "purl": "pkg:maven/io.quarkus/quarkus-fs-util@1.1.0",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-fs-util-1.1.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "515792e2c261e704b5c052be21fdaa9cc43aa5fd8588df53cf2edd071fd9ee26",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-fs-util/1.1.0/quarkus-fs-util-1.1.0-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-jackson:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-jackson@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-jackson__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-jackson-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "886fb4f3f841e9d731447a2c764254b49893b2a1326b4aad1460a7cd4753beaf",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jackson/3.27.6/quarkus-jackson-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-jsonp:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-jsonp@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-jsonp__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-jsonp-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "55a5c1f3c19cf42cd4d95cbd0fad1db9665b10f8586c7e62a395c389b6618bce",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-jsonp/3.27.6/quarkus-jsonp-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-mutiny:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-mutiny@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-mutiny__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-mutiny-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "68f3d9108defe534ba075ad1a989b39dd0f6b5057bc686ed38b4fdeddf15ea4c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-mutiny/3.27.6/quarkus-mutiny-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-netty:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-netty@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-netty__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-netty-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "f46578c3f5055ac1e76e9d54aef969ec33da1abff5dba72da2da585d7eb92744",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-netty/3.27.6/quarkus-netty-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-rest:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-rest@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-rest__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-rest-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a79492cea09ab2e239e48654d047512305c3d097a2754d58610c865a7fdccb02",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest/3.27.6/quarkus-rest-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-rest-common:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-rest-common@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-rest-common__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-rest-common-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a0e63e7069e2a563e3389722cd60f870b5a7a6c4a625374bab7d35fdc1780002",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-common/3.27.6/quarkus-rest-common-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-rest-jackson:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-rest-jackson@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-rest-jackson__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-rest-jackson-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ccf258afd80183eef2808e400f72fda4bc47b0c34d999e21803a875ed086bf28",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-jackson/3.27.6/quarkus-rest-jackson-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-rest-jackson-common:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-rest-jackson-common@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-rest-jackson-common__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-rest-jackson-common-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "48a279ca656a5f87ea0c277d5ab22916c8b5856bed8d2a973645ae44a4b5c572",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-rest-jackson-common/3.27.6/quarkus-rest-jackson-common-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-security-runtime-spi:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-security-runtime-spi@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-security-runtime-spi__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-security-runtime-spi-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "68185fe8f128f285bfd9881806e2640d8f1a5bb61f5d60925613500b6e30c080",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-security-runtime-spi/3.27.6/quarkus-security-runtime-spi-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-smallrye-context-propagation:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-smallrye-context-propagation@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-smallrye-context-propagation__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-smallrye-context-propagation-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "cd7cbdc10130844c04e1d6dcc5e197eb6c66bcd0755ae699b72d1754505ac36d",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-smallrye-context-propagation/3.27.6/quarkus-smallrye-context-propagation-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-tls-registry:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-tls-registry@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-tls-registry__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-tls-registry-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7efac4825c72bdde7e013db8edbc0015e953e218528cd6d1bf5b964eda8b9d96",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry/3.27.6/quarkus-tls-registry-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-tls-registry-spi:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-tls-registry-spi@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-tls-registry-spi__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-tls-registry-spi-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "21f849e9015ca2a1b770ddde34c0955b8f9f39a89eb524082c95d68bca8facd0",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-tls-registry-spi/3.27.6/quarkus-tls-registry-spi-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-vertx:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-vertx@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-vertx__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-vertx-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "f63f5e719d73238b7f033e14add0e3f78ad0be13581528c4beb61f3802910114",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx/3.27.6/quarkus-vertx-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-vertx-http:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-vertx-http@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-vertx-http__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-vertx-http-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "22d843e24baa648c952c44ea60ec19d09637494820967ddfb5c27dff96dbd834",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-vertx-http/3.27.6/quarkus-vertx-http-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus:quarkus-virtual-threads:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus/quarkus-virtual-threads@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus__quarkus-virtual-threads__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.quarkus-virtual-threads-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "38465351b7c07e8f6374a74e2117166cec2be1d78a8384358fd3865880274dae",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/quarkus-virtual-threads/3.27.6/quarkus-virtual-threads-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.resteasy.reactive:resteasy-reactive:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.resteasy.reactive/resteasy-reactive@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.resteasy.reactive__resteasy-reactive__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.resteasy.reactive.resteasy-reactive-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "1b41a4a0e7b1df7a0554247f080512484447c7c0bd3f4f653204dd6b7b8f25c2",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive/3.27.6/resteasy-reactive-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.resteasy.reactive:resteasy-reactive-common:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.resteasy.reactive/resteasy-reactive-common@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.resteasy.reactive__resteasy-reactive-common__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.resteasy.reactive.resteasy-reactive-common-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a638bf61ed54dc02e2689a0cb89e541f10fa1a155a65865f0f1f616803613143",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common/3.27.6/resteasy-reactive-common-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.resteasy.reactive:resteasy-reactive-common-types:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.resteasy.reactive/resteasy-reactive-common-types@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.resteasy.reactive__resteasy-reactive-common-types__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.resteasy.reactive.resteasy-reactive-common-types-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "45e7dece50a026f37600f408c2462a6484604e6716c6866b6b24a092f8b1c732",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-common-types/3.27.6/resteasy-reactive-common-types-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.resteasy.reactive:resteasy-reactive-jackson:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.resteasy.reactive/resteasy-reactive-jackson@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.resteasy.reactive__resteasy-reactive-jackson__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.resteasy.reactive.resteasy-reactive-jackson-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7448a494917aad290116a52570b56152d8e5958251753d98c36e84918429f43a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-jackson/3.27.6/resteasy-reactive-jackson-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.resteasy.reactive:resteasy-reactive-vertx:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.resteasy.reactive/resteasy-reactive-vertx@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.resteasy.reactive__resteasy-reactive-vertx__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.resteasy.reactive.resteasy-reactive-vertx-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ff59f096fbc8480f4584dfaf4feb1e8c08cc3d597b7514347fcf592b317f37f1",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/resteasy/reactive/resteasy-reactive-vertx/3.27.6/resteasy-reactive-vertx-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.security:quarkus-security:2.2.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.security/quarkus-security@2.2.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.security.quarkus-security-2.2.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b5020f6fcc506d2db71c17ac6854cc3a9078c0b73952918048d1f2cbb4a7d8f8",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/security/quarkus-security/2.2.1/quarkus-security-2.2.1-sources.jar"
+    },
+    {
+      "coordinates": "io.quarkus.vertx.utils:quarkus-vertx-utils:3.27.6",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.quarkus.vertx.utils/quarkus-vertx-utils@3.27.6",
+      "retainedTexts": [
+        "third-party/retained/io.quarkus.vertx.utils__quarkus-vertx-utils__3.27.6/binary/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.quarkus.vertx.utils.quarkus-vertx-utils-3.27.6.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "534d8394c87192d993f124f04ea211b2335107383093e137b2c677cbf9833b0a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/quarkus/vertx/utils/quarkus-vertx-utils/3.27.6/quarkus-vertx-utils-3.27.6-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.certs:smallrye-private-key-pem-parser:0.9.2",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.certs/smallrye-private-key-pem-parser@0.9.2",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.certs.smallrye-private-key-pem-parser-0.9.2.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "4ba98e92ed203593d87e384a1e09fa96c18c90173a6170fea71cf23a1c9c5286",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/certs/smallrye-private-key-pem-parser/0.9.2/smallrye-private-key-pem-parser-0.9.2-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-annotation:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-annotation@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.common.smallrye-common-annotation-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ad3eff15b46fbf81bbc95315144640774bde7817c2e75981230a1fe39eb7429a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-annotation/2.13.9/smallrye-common-annotation-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-classloader:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-classloader@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.common.smallrye-common-classloader-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "27b7498b4d26e9288689570f8a859b08806d59f44fa0a4db03e60dd51d4d7884",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-classloader/2.13.9/smallrye-common-classloader-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.common:smallrye-common-vertx-context:2.13.9",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.common/smallrye-common-vertx-context@2.13.9",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.common.smallrye-common-vertx-context-2.13.9.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "2f00c34a83458a2a505642593499e6e05c509694f2308732af5dd9160ad1054d",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/common/smallrye-common-vertx-context/2.13.9/smallrye-common-vertx-context-2.13.9-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.config:smallrye-config:3.13.4",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.config/smallrye-config@3.13.4",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.config.smallrye-config-3.13.4.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ca8d6fb0b020d874b707f2c4a13d6492d62ea7fffa95fe03c040f553f77998f4",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/config/smallrye-config/3.13.4/smallrye-config-3.13.4-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.config:smallrye-config-common:3.13.4",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.config/smallrye-config-common@3.13.4",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.config.smallrye-config-common-3.13.4.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "fd3fb6f0609d2cb95d26119912165f89036120392ff79cabe0bc24cdb7acda51",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/config/smallrye-config-common/3.13.4/smallrye-config-common-3.13.4-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.config:smallrye-config-core:3.13.4",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.config/smallrye-config-core@3.13.4",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.config.smallrye-config-core-3.13.4.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b2ac5384844bae798b40c57057f131eb72754fb68366fb092bda5d913ee4a35b",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/config/smallrye-config-core/3.13.4/smallrye-config-core-3.13.4-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:mutiny:2.9.5",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/mutiny@2.9.5",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.mutiny-2.9.5.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7e3d1ac6016cfb1526d8e49abf48bb72bf752305e6cd7f5609f9d3f75e04bd90",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/mutiny/2.9.5/mutiny-2.9.5-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:mutiny-smallrye-context-propagation:2.9.5",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/mutiny-smallrye-context-propagation@2.9.5",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.mutiny-smallrye-context-propagation-2.9.5.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7311ef3f8f4f40efd1b8c2abfe879cc287a88cb6a1c33eba6c819eb432cb3fe9",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/mutiny-smallrye-context-propagation/2.9.5/mutiny-smallrye-context-propagation-2.9.5-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:mutiny-zero-flow-adapters:1.1.1",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/mutiny-zero-flow-adapters@1.1.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.mutiny-zero-flow-adapters-1.1.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "7e2576e235bcd277c52d67e11d70d1922040bc1b769883d985d68c60597a1ab2",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/mutiny-zero-flow-adapters/1.1.1/mutiny-zero-flow-adapters-1.1.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-auth-common:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-auth-common@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-auth-common-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "d4defd33cf294ac695d7817b764f52626d7690d0bee944ba4b84ffa02278faab",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-auth-common/3.23.1/smallrye-mutiny-vertx-auth-common-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-bridge-common:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-bridge-common@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-bridge-common-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "8b14169047ddbb2e5da91de00b37d62ff8b2ca49ae4553a0742660c50fe91065",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-bridge-common/3.23.1/smallrye-mutiny-vertx-bridge-common-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-core:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-core@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-core-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "dc5578295b8e5dc10f9fd8028ecb3ac3ed8b2ccc54b8b80172181188f577372e",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-core/3.23.1/smallrye-mutiny-vertx-core-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-runtime:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-runtime@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-runtime-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ab996413864654f8977a4459154d36b093dabd661e8d17c3854d2ca20616bf8c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-runtime/3.23.1/smallrye-mutiny-vertx-runtime-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-uri-template:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-uri-template@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-uri-template-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "95b798fd11f3d199593388c85aea6f9ffbae178a2d48444d9d79b4ca3714fa57",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-uri-template/3.23.1/smallrye-mutiny-vertx-uri-template-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-web:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-web@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-web-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "106413b6575604c1eff68a1ad6bbe890d635a7c55ee198858ce4bd8012189da0",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-web/3.23.1/smallrye-mutiny-vertx-web-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye.reactive:smallrye-mutiny-vertx-web-common:3.23.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye.reactive/smallrye-mutiny-vertx-web-common@3.23.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.reactive.smallrye-mutiny-vertx-web-common-3.23.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "05e78bf89604a2653ede8cdad2f540aa63e5e97d1304188a86769db9a57e7558",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/reactive/smallrye-mutiny-vertx-web-common/3.23.1/smallrye-mutiny-vertx-web-common-3.23.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye:smallrye-context-propagation:2.2.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye/smallrye-context-propagation@2.2.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.smallrye-context-propagation-2.2.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "91fa253d8bd903672f30b9bcd03a97f03a73499f5a7ed1fd3d03d04f5348549a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/smallrye-context-propagation/2.2.1/smallrye-context-propagation-2.2.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye:smallrye-context-propagation-api:2.2.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye/smallrye-context-propagation-api@2.2.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.smallrye-context-propagation-api-2.2.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "a13147f305d4879074c073adfd861d07076278b18f1f8010acd81fd8a21f5cb9",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/smallrye-context-propagation-api/2.2.1/smallrye-context-propagation-api-2.2.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye:smallrye-context-propagation-storage:2.2.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye/smallrye-context-propagation-storage@2.2.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.smallrye-context-propagation-storage-2.2.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "3b347bb57c8ec93ed2375ae78f24908fa0b541a110de80afdb63f325a5c8a705",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/smallrye-context-propagation-storage/2.2.1/smallrye-context-propagation-storage-2.2.1-sources.jar"
+    },
+    {
+      "coordinates": "io.smallrye:smallrye-fault-tolerance-vertx:6.9.4",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.smallrye/smallrye-fault-tolerance-vertx@6.9.4",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.smallrye.smallrye-fault-tolerance-vertx-6.9.4.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "6d2b35f279f031038400e62b816464fab8142533f466a5f264d45efad554303d",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/smallrye/smallrye-fault-tolerance-vertx/6.9.4/smallrye-fault-tolerance-vertx-6.9.4-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-auth-common:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 1.0",
+          "url": "http://www.eclipse.org/legal/epl-v10.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-auth-common@4.5.34",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-auth-common-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "2fc9f280b2193718db2bde020e8ca9107eff2a78d27389b7c4db63f72980c4de",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-auth-common/4.5.34/vertx-auth-common-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-bridge-common:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 1.0",
+          "url": "http://www.eclipse.org/legal/epl-v10.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-bridge-common@4.5.34",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-bridge-common-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "b57384bda3c9ebb78cc734ddf0d83bd6b55335ceb259e41d315854f9b737318a",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-bridge-common/4.5.34/vertx-bridge-common-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-core:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 2.0",
+          "url": "http://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-core@4.5.34",
+      "retainedTexts": [
+        "third-party/retained/io.vertx__vertx-core__4.5.34/source/io/vertx/core/http/impl/cgbystrom/LICENSE",
+        "third-party/retained/io.vertx__vertx-core__4.5.34/source/io/vertx/core/impl/cpu/LICENSE",
+        "third-party/retained/io.vertx__vertx-core__4.5.34/source/io/vertx/core/net/impl/pkcs1/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-core-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "750ec27491f9eea3df24e3a85670a0b1998827bb729ec95b2d9d3dbbfdf8792c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-core/4.5.34/vertx-core-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-uri-template:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 1.0",
+          "url": "http://www.eclipse.org/legal/epl-v10.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-uri-template@4.5.34",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-uri-template-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "d303e9f044347bc350241dfb2150f05d3b93d6c7f56c74757861ca582e8f62df",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-uri-template/4.5.34/vertx-uri-template-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-web:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 2.0",
+          "url": "http://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-web@4.5.34",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-web-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "14ae3cadbac1d0794cbf5e66fdb3cc61611235ac05f57bfdb65d9c21a6b97add",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-web/4.5.34/vertx-web-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "io.vertx:vertx-web-common:4.5.34",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+          "name": "Eclipse Public License - v 1.0",
+          "url": "http://www.eclipse.org/legal/epl-v10.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/io.vertx/vertx-web-common@4.5.34",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/io.vertx.vertx-web-common-4.5.34.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "378371867305e73cddcea7027217d9a9fddbd18e57de74021824cb2bf1962019",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/io/vertx/vertx-web-common/4.5.34/vertx-web-common-4.5.34-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.activation:jakarta.activation-api:2.1.3",
+      "declaredLicences": [
+        {
+          "name": "EDL 1.0",
+          "url": "http://www.eclipse.org/org/documents/edl-v10.php"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/jakartaee/jaf-api",
+      "purl": "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3",
+      "retainedTexts": [
+        "third-party/retained/jakarta.activation__jakarta.activation-api__2.1.3/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.activation__jakarta.activation-api__2.1.3/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.activation__jakarta.activation-api__2.1.3/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.activation__jakarta.activation-api__2.1.3/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.activation.jakarta.activation-api-2.1.3.jar",
+      "selectedLicence": "EDL-1.0",
+      "sha256": "01b176d718a169263e78290691fc479977186bcc6b333487325084d6586f4627",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.annotation:jakarta.annotation-api:3.0.0",
+      "correspondingSource": "third-party/sources/jakarta.annotation.jakarta.annotation-api-3.0.0-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "EPL 2.0",
+          "url": "https://www.eclipse.org/legal/epl-2.0"
+        },
+        {
+          "name": "GPL2 w/ CPE",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://projects.eclipse.org/projects/ee4j.ca",
+      "purl": "pkg:maven/jakarta.annotation/jakarta.annotation-api@3.0.0",
+      "retainedTexts": [
+        "third-party/retained/jakarta.annotation__jakarta.annotation-api__3.0.0/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.annotation__jakarta.annotation-api__3.0.0/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.annotation__jakarta.annotation-api__3.0.0/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.annotation__jakarta.annotation-api__3.0.0/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.annotation.jakarta.annotation-api-3.0.0.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "b01f55552284cfb149411e64eabca75e942d26d2e1786b32914250e4330afaa2",
+      "sourceSha256": "142dfd2343429df2aac3e1cfacfacc21c8393112c0e0280d3628648d9b612470",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.el:jakarta.el-api:6.0.1",
+      "correspondingSource": "third-party/sources/jakarta.el.jakarta.el-api-6.0.1-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "Eclipse Public License v. 2.0",
+          "url": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
+        },
+        {
+          "name": "GNU General Public License, version 2 with the GNU Classpath Exception",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://projects.eclipse.org/projects/ee4j.el",
+      "purl": "pkg:maven/jakarta.el/jakarta.el-api@6.0.1",
+      "retainedTexts": [
+        "third-party/retained/jakarta.el__jakarta.el-api__6.0.1/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.el__jakarta.el-api__6.0.1/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.el__jakarta.el-api__6.0.1/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.el__jakarta.el-api__6.0.1/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.el.jakarta.el-api-6.0.1.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "7e84b5bed49de32b79cc5e85d90b6f5adb1a953ac67283adbb41c1e297f9c605",
+      "sourceSha256": "fb59ec136656b409244f94e9700c409036b41e5110ee9f72d3a393d08e31d3f8",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/el/jakarta.el-api/6.0.1/jakarta.el-api-6.0.1-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "http://cdi-spec.org",
+      "purl": "pkg:maven/jakarta.enterprise/jakarta.enterprise.cdi-api@4.1.0",
+      "retainedTexts": [
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.cdi-api__4.1.0/binary/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.cdi-api__4.1.0/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.cdi-api__4.1.0/source/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.cdi-api__4.1.0/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.enterprise.jakarta.enterprise.cdi-api-4.1.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "c42c808f17925129a0800f618febe050d966e181a4c7384c8a5e7a0283d68699",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/enterprise/jakarta.enterprise.cdi-api/4.1.0/jakarta.enterprise.cdi-api-4.1.0-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.enterprise:jakarta.enterprise.lang-model:4.1.0",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/jakarta.enterprise/jakarta.enterprise.lang-model@4.1.0",
+      "retainedTexts": [
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.lang-model__4.1.0/binary/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.lang-model__4.1.0/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.lang-model__4.1.0/source/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.enterprise__jakarta.enterprise.lang-model__4.1.0/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.enterprise.jakarta.enterprise.lang-model-4.1.0.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "bb56f571f60d2862b2387d5468fe8f5540f8094727283ed991f89082708095ee",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/enterprise/jakarta.enterprise.lang-model/4.1.0/jakarta.enterprise.lang-model-4.1.0-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.inject:jakarta.inject-api:2.0.1",
+      "declaredLicences": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/eclipse-ee4j/injection-api",
+      "purl": "pkg:maven/jakarta.inject/jakarta.inject-api@2.0.1",
+      "retainedTexts": [
+        "third-party/retained/jakarta.inject__jakarta.inject-api__2.0.1/binary/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.inject__jakarta.inject-api__2.0.1/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.inject__jakarta.inject-api__2.0.1/source/META-INF/LICENSE.txt",
+        "third-party/retained/jakarta.inject__jakarta.inject-api__2.0.1/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.inject.jakarta.inject-api-2.0.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "f7dc98062fccf14126abb751b64fab12c312566e8cbdc8483598bffcea93af7c",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.interceptor:jakarta.interceptor-api:2.2.0",
+      "correspondingSource": "third-party/sources/jakarta.interceptor.jakarta.interceptor-api-2.2.0-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "EPL 2.0",
+          "url": "http://www.eclipse.org/legal/epl-2.0"
+        },
+        {
+          "name": "GPL2 w/ CPE",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/jakartaee/interceptors",
+      "purl": "pkg:maven/jakarta.interceptor/jakarta.interceptor-api@2.2.0",
+      "retainedTexts": [
+        "third-party/retained/jakarta.interceptor__jakarta.interceptor-api__2.2.0/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.interceptor__jakarta.interceptor-api__2.2.0/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.interceptor__jakarta.interceptor-api__2.2.0/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.interceptor__jakarta.interceptor-api__2.2.0/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.interceptor.jakarta.interceptor-api-2.2.0.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "d240d72b4dd38a2e431c804079810010cb97903678fa5f987fb7434878b04398",
+      "sourceSha256": "5a62d1258baef7887617391feda9b4de709136a30b706d7bf23d970fb6895052",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/interceptor/jakarta.interceptor-api/2.2.0/jakarta.interceptor-api-2.2.0-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.json:jakarta.json-api:2.1.3",
+      "correspondingSource": "third-party/sources/jakarta.json.jakarta.json-api-2.1.3-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "Eclipse Public License 2.0",
+          "url": "https://projects.eclipse.org/license/epl-2.0"
+        },
+        {
+          "name": "GNU General Public License, version 2 with the GNU Classpath Exception",
+          "url": "https://projects.eclipse.org/license/secondary-gpl-2.0-cp"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/eclipse-ee4j/jsonp",
+      "purl": "pkg:maven/jakarta.json/jakarta.json-api@2.1.3",
+      "retainedTexts": [
+        "third-party/retained/jakarta.json__jakarta.json-api__2.1.3/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.json__jakarta.json-api__2.1.3/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.json__jakarta.json-api__2.1.3/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.json__jakarta.json-api__2.1.3/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.json.jakarta.json-api-2.1.3.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "bc934142805ea1d794f1440563965a3861a2a9fb7414ecd3fe44f26500734414",
+      "sourceSha256": "1b1f8585037ae1f34afd052013cc36788853bd4ad4ed566fe5f190b63c5008d2",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/json/jakarta.json-api/2.1.3/jakarta.json-api-2.1.3-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.transaction:jakarta.transaction-api:2.0.1",
+      "correspondingSource": "third-party/sources/jakarta.transaction.jakarta.transaction-api-2.0.1-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "EPL 2.0",
+          "url": "http://www.eclipse.org/legal/epl-2.0"
+        },
+        {
+          "name": "GPL2 w/ CPE",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://projects.eclipse.org/projects/ee4j.jta",
+      "purl": "pkg:maven/jakarta.transaction/jakarta.transaction-api@2.0.1",
+      "retainedTexts": [
+        "third-party/retained/jakarta.transaction__jakarta.transaction-api__2.0.1/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.transaction__jakarta.transaction-api__2.0.1/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.transaction__jakarta.transaction-api__2.0.1/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.transaction__jakarta.transaction-api__2.0.1/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.transaction.jakarta.transaction-api-2.0.1.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "50c0a7c760c13ae6c042acf182b28f0047413db95b4636fb8879bcffab5ba875",
+      "sourceSha256": "fef60299cebc6f83d6ac0d7feb025ba23a0b85cc5908769869cd741f4e482614",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.ws.rs:jakarta.ws.rs-api:3.1.0",
+      "correspondingSource": "third-party/sources/jakarta.ws.rs.jakarta.ws.rs-api-3.1.0-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "EPL-2.0",
+          "url": "http://www.eclipse.org/legal/epl-2.0"
+        },
+        {
+          "name": "GPL-2.0-with-classpath-exception",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/eclipse-ee4j/jaxrs-api",
+      "purl": "pkg:maven/jakarta.ws.rs/jakarta.ws.rs-api@3.1.0",
+      "retainedTexts": [
+        "third-party/retained/jakarta.ws.rs__jakarta.ws.rs-api__3.1.0/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.ws.rs__jakarta.ws.rs-api__3.1.0/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.ws.rs__jakarta.ws.rs-api__3.1.0/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.ws.rs__jakarta.ws.rs-api__3.1.0/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.ws.rs.jakarta.ws.rs-api-3.1.0.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "6b3b3628b8b4aedda0d24c3354335e985497d8ef3c510b8f3028e920d5b8663d",
+      "sourceSha256": "9daf5a26dd3dce53049784a7d5258037f7b3da7df07eaa19a02efb785719052e",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/3.1.0/jakarta.ws.rs-api-3.1.0-sources.jar"
+    },
+    {
+      "coordinates": "jakarta.xml.bind:jakarta.xml.bind-api:4.0.2",
+      "declaredLicences": [
+        {
+          "name": "Eclipse Distribution License - v 1.0",
+          "url": "http://www.eclipse.org/org/documents/edl-v10.php"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/jakarta.xml.bind/jakarta.xml.bind-api@4.0.2",
+      "retainedTexts": [
+        "third-party/retained/jakarta.xml.bind__jakarta.xml.bind-api__4.0.2/binary/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.xml.bind__jakarta.xml.bind-api__4.0.2/binary/META-INF/NOTICE.md",
+        "third-party/retained/jakarta.xml.bind__jakarta.xml.bind-api__4.0.2/source/META-INF/LICENSE.md",
+        "third-party/retained/jakarta.xml.bind__jakarta.xml.bind-api__4.0.2/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/jakarta.xml.bind.jakarta.xml.bind-api-4.0.2.jar",
+      "selectedLicence": "EDL-1.0",
+      "sha256": "0d6bcfe47763e85047acf7c398336dc84ff85ebcad0a7cb6f3b9d3e981245406",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2-sources.jar"
+    },
+    {
+      "coordinates": "org.eclipse.microprofile.config:microprofile-config-api:3.1",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.eclipse.microprofile.config/microprofile-config-api@3.1",
+      "retainedTexts": [
+        "third-party/retained/org.eclipse.microprofile.config__microprofile-config-api__3.1/binary/META-INF/LICENSE",
+        "third-party/retained/org.eclipse.microprofile.config__microprofile-config-api__3.1/binary/META-INF/NOTICE",
+        "third-party/retained/org.eclipse.microprofile.config__microprofile-config-api__3.1/source/META-INF/LICENSE",
+        "third-party/retained/org.eclipse.microprofile.config__microprofile-config-api__3.1/source/META-INF/NOTICE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.eclipse.microprofile.config.microprofile-config-api-3.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "dee277f81e1edfeafd5e43589441ecdf434500fe4a31d035e74b8e6d8e7bfd91",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/eclipse/microprofile/config/microprofile-config-api/3.1/microprofile-config-api-3.1-sources.jar"
+    },
+    {
+      "coordinates": "org.eclipse.microprofile.context-propagation:microprofile-context-propagation-api:1.3",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.eclipse.microprofile.context-propagation/microprofile-context-propagation-api@1.3",
+      "retainedTexts": [
+        "third-party/retained/org.eclipse.microprofile.context-propagation__microprofile-context-propagation-api__1.3/binary/META-INF/LICENSE",
+        "third-party/retained/org.eclipse.microprofile.context-propagation__microprofile-context-propagation-api__1.3/source/META-INF/LICENSE"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.eclipse.microprofile.context-propagation.microprofile-context-propagation-api-1.3.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "69ccc04487e87779d4970aa50c673cc34a9df080c1c0e8d8eab2e8b46f825cf4",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/eclipse/microprofile/context-propagation/microprofile-context-propagation-api/1.3/microprofile-context-propagation-api-1.3-sources.jar"
+    },
+    {
+      "coordinates": "org.eclipse.parsson:parsson:1.1.7",
+      "correspondingSource": "third-party/sources/org.eclipse.parsson.parsson-1.1.7-sources.jar",
+      "declaredLicences": [
+        {
+          "name": "Eclipse Public License 2.0",
+          "url": "https://projects.eclipse.org/license/epl-2.0"
+        },
+        {
+          "name": "GNU General Public License, version 2 with the GNU Classpath Exception",
+          "url": "https://projects.eclipse.org/license/secondary-gpl-2.0-cp"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.eclipse.parsson/parsson@1.1.7",
+      "retainedTexts": [
+        "third-party/retained/org.eclipse.parsson__parsson__1.1.7/binary/META-INF/LICENSE.md",
+        "third-party/retained/org.eclipse.parsson__parsson__1.1.7/binary/META-INF/NOTICE.md",
+        "third-party/retained/org.eclipse.parsson__parsson__1.1.7/source/META-INF/LICENSE.md",
+        "third-party/retained/org.eclipse.parsson__parsson__1.1.7/source/META-INF/NOTICE.md"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.eclipse.parsson.parsson-1.1.7.jar",
+      "selectedLicence": "EPL-2.0",
+      "sha256": "c21db018f8ac6cf79893f1af77f1cd337937bd12ae6fa3d4b10f5a00819ee56c",
+      "sourceSha256": "713a473593782f3500e4fe829fb9b0d282e72cc67970ddbea4447fe93d045511",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/eclipse/parsson/parsson/1.1.7/parsson-1.1.7-sources.jar"
+    },
+    {
+      "coordinates": "org.jboss.logging:commons-logging-jboss-logging:1.0.0.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "http://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "http://www.jboss.org",
+      "purl": "pkg:maven/org.jboss.logging/commons-logging-jboss-logging@1.0.0.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.jboss.logging.commons-logging-jboss-logging-1.0.0.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "f12176263ea25f4e78bb4fa4b36d335a29738dde6a8123e1b6da89a655d150ff",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jboss/logging/commons-logging-jboss-logging/1.0.0.Final/commons-logging-jboss-logging-1.0.0.Final-sources.jar"
+    },
+    {
+      "coordinates": "org.jboss.slf4j:slf4j-jboss-logmanager:2.0.2.Final",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.jboss.slf4j/slf4j-jboss-logmanager@2.0.2.Final",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.jboss.slf4j.slf4j-jboss-logmanager-2.0.2.Final.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "ba469a975e9d1e79f34a8baa1a0afa8b01bbd8cf080537c0e0899476d31db84b",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jboss/slf4j/slf4j-jboss-logmanager/2.0.2.Final/slf4j-jboss-logmanager-2.0.2.Final-sources.jar"
+    },
+    {
+      "coordinates": "org.jboss.threads:jboss-threads:3.9.1",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/jbossas/jboss-threads",
+      "purl": "pkg:maven/org.jboss.threads/jboss-threads@3.9.1",
+      "retainedTexts": [
+        "third-party/retained/org.jboss.threads__jboss-threads__3.9.1/binary/META-INF/LICENSE.txt",
+        "third-party/retained/org.jboss.threads__jboss-threads__3.9.1/source/META-INF/LICENSE.txt"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.jboss.threads.jboss-threads-3.9.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "d3af2f6b942eae683ff2de7dfe68467f8d570cbba8db37fe858977349c3bf2aa",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jboss/threads/jboss-threads/3.9.1/jboss-threads-3.9.1-sources.jar"
+    },
+    {
+      "coordinates": "org.jctools:jctools-core:4.0.5",
+      "declaredLicences": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "https://github.com/JCTools",
+      "purl": "pkg:maven/org.jctools/jctools-core@4.0.5",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.jctools.jctools-core-4.0.5.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "d65e5f38bcd0984e26f87187687f1f70dd52740c4d5e046f8d104e01ab5db95f",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/jctools/jctools-core/4.0.5/jctools-core-4.0.5-sources.jar"
+    },
+    {
+      "coordinates": "org.reactivestreams:reactive-streams:1.0.4",
+      "declaredLicences": [
+        {
+          "name": "MIT-0",
+          "url": "https://spdx.org/licenses/MIT-0.html"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "http://www.reactive-streams.org/",
+      "purl": "pkg:maven/org.reactivestreams/reactive-streams@1.0.4",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.reactivestreams.reactive-streams-1.0.4.jar",
+      "selectedLicence": "MIT-0",
+      "sha256": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4-sources.jar"
+    },
+    {
+      "coordinates": "org.slf4j:slf4j-api:2.0.17",
+      "declaredLicences": [
+        {
+          "name": "MIT",
+          "url": "https://opensource.org/license/mit"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": "http://www.slf4j.org",
+      "purl": "pkg:maven/org.slf4j/slf4j-api@2.0.17",
+      "retainedTexts": [
+        "third-party/retained/org.slf4j__slf4j-api__2.0.17/binary/META-INF/LICENSE.txt",
+        "third-party/retained/org.slf4j__slf4j-api__2.0.17/source/META-INF/LICENSE.txt"
+      ],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.slf4j.slf4j-api-2.0.17.jar",
+      "selectedLicence": "MIT",
+      "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17-sources.jar"
+    },
+    {
+      "coordinates": "org.wildfly.common:wildfly-common:2.0.1",
+      "declaredLicences": [
+        {
+          "name": "Apache License 2.0",
+          "url": "http://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "embeddedComponents": [],
+      "projectUrl": null,
+      "purl": "pkg:maven/org.wildfly.common/wildfly-common@2.0.1",
+      "retainedTexts": [],
+      "runtimeFile": "dist/quarkus-app/lib/main/org.wildfly.common.wildfly-common-2.0.1.jar",
+      "selectedLicence": "Apache-2.0",
+      "sha256": "fa4a710db7ae3e598a5f41639eb54e9f7b09de5fd0f58f56bd6070f21d956374",
+      "sourceUrl": "https://repo.maven.apache.org/maven2/org/wildfly/common/wildfly-common/2.0.1/wildfly-common-2.0.1-sources.jar"
+    }
+  ],
+  "project": "directory-provisioning-service",
+  "scope": "Exact runtime JAR inventory; embedded/native code is additionally covered by retained and supplemental notices.",
+  "version": "1.0.0"
+}

@@ -1,3 +1,5 @@
+// Copyright 2026 Marcus Tornberg
+// SPDX-License-Identifier: Apache-2.0
 // Request transformation: account context must identify the intended AD account.
 var item = JSON.parse(inputValue);
 if (!item.accountProvId) {

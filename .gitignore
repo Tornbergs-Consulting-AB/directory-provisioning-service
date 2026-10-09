@@ -6,3 +6,5 @@ build/
 .env
 config/application.properties
 logs/
+dist/
+third-party/source-cache/

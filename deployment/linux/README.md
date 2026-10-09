@@ -1,6 +1,6 @@
 # Linux installer (fresh installations)
 
-The installer and directory-provisioning.service must be in the same folder.
+Use the complete extracted release layout: the installer and directory-provisioning.service are in deployment/linux, with LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and third-party/ at the project root. The installer retains these licence/source materials in the installation.
 Use the extracted distribution, prepared configuration and prepared certificates:
 
 ```bash
