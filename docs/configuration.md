@@ -1,6 +1,8 @@
 # Configuration — 1.0.0
 
-Configure the service in `config/application.properties` relative to its working directory. Use [the example configuration](../examples/service-config.properties) as a starting point.
+For a first installation, follow [Certificates and application.properties](certificates-and-configuration.md) before using this reference. It explains how to prepare both certificate files and configure their passwords.
+
+`application.properties` is the installation's plain-text settings file. Copy [the example configuration](../examples/service-config.properties) to `config/application.properties` relative to the service working directory, replace its placeholders, and restart after edits. The example filename `service-config.properties` is not loaded automatically. Do not put the external configuration inside `quarkus-app`. Environment variables and Java system properties can override file values.
 
 ## Mandatory external settings
 

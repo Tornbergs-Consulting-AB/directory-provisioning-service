@@ -1,5 +1,7 @@
 # Operations — 1.0.0
 
+For initial certificate creation and the relationship to `config/application.properties`, start with [Certificates and application.properties](certificates-and-configuration.md). Prepare those files before installing the service.
+
 ## Startup and logs
 
 Production startup validation is enabled by default. It checks target format, nonempty valid bind/search DNs, positive timeouts/concurrency, port range, disabled HTTP, readable HTTPS keystore, and a loadable nonempty PKCS12 LDAP truststore. Quarkus loads the HTTPS keystore. It performs no LDAP bind at startup because credentials belong to individual requests. A failed check prevents startup; diagnostics omit configuration values and exception causes. `dps.startup-validation=false` is for isolated local test runs only. The probe remains disabled.

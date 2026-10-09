@@ -1,5 +1,7 @@
 # Windows keystore passwords and startup diagnosis
 
+First prepare the configuration and certificate files using [Certificates and application.properties](../../docs/certificates-and-configuration.md). `DPS_HTTPS_KEYSTORE_PASSWORD` opens `service-https.p12`; `DPS_TRUSTSTORE_PASSWORD` opens `ldap-truststore.p12`. Neither is the AD account password.
+
 An interactive PowerShell $env variable is not passed to a service launched by the Windows Service Control Manager. For an explicit per-service environment, add these two elements inside the <service> element in the WinSW XML beside the wrapper executable:
 
 ```xml

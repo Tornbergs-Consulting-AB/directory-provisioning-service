@@ -1,5 +1,7 @@
 # Linux installer (fresh installations)
 
+Before running the installer, follow [Certificates and application.properties](../../docs/certificates-and-configuration.md) to prepare `config/application.properties`, `config/certs/service-https.p12` and `config/certs/ldap-truststore.p12`. The installer does not create certificates. It prompts for the two passwords chosen when those stores were prepared.
+
 Use the complete extracted release layout: the installer and directory-provisioning.service are in deployment/linux, with LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and third-party/ at the project root. The installer retains these licence/source materials in the installation.
 Use the extracted distribution, prepared configuration and prepared certificates:
 

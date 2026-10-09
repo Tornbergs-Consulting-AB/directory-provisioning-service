@@ -4,6 +4,7 @@ These documents describe the current release. Earlier upgrade notes and developm
 
 | Document | Purpose |
 |---|---|
+| [Start here: certificates and application.properties](certificates-and-configuration.md) | First installation: certificate roles, lab/production creation, file layout, passwords and connection test |
 | [Configuration](configuration.md) | Required settings, defaults, TLS and JSON diagnostics |
 | [Operations](operations.md) | Linux/Windows services, logs, monitoring and certificate renewal |
 | [Linux installer](../deployment/linux/README.md) | Fresh installation on Linux/RHEL |

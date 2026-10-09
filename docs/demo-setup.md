@@ -1,21 +1,8 @@
 # DEMO lab setup — 1.0.0
 
-Configured LDAPS host: demodc01.demo.tornbergs.consulting:636.
-Allowed bind DN: CN=Administrator,CN=Users,DC=demo,DC=tornbergs,DC=consulting.
-LDAP truststore: use the existing PKCS12 file and correct password.
+Prepare the HTTPS keystore, LDAP truststore and `config/application.properties` using [Certificates and application.properties](certificates-and-configuration.md). That guide includes lab certificate commands for Linux and Windows, and production CA options. If your existing stores work, keep them.
 
-## HTTPS server certificate
-
-This is separate from the DC certificate/truststore. Choose the DNS name of the host running the REST service; IG must resolve it and trust its certificate. If using a temporary self-signed LAB certificate:
-
-```bash
-keytool -genkeypair -alias service-https -keyalg RSA -keysize 3072 -validity 365 -storetype PKCS12 -keystore config/certs/service-https.p12 -dname "CN=YOUR-SERVICE-HOST" -ext "SAN=dns:YOUR-SERVICE-HOST"
-keytool -exportcert -rfc -alias service-https -keystore config/certs/service-https.p12 -file config/certs/service-https.pem
-```
-
-Replace YOUR-SERVICE-HOST with the actual hostname. Prompts avoid placing passwords on the command line. Use the same key/store password for this lab keystore. Trust the exported **public** certificate in the trust configuration used by IG/DaaS; do not disable certificate validation. On Linux, use /opt/netiq/idm/apps/jdk/bin/keytool if it is not in PATH.
-
-Configure HTTPS as in examples/service-config.properties. Set both truststore-password and HTTPS-keystore-password environment variables without committing them or embedding them in scripts. They are independent of the AD password.
+The earlier pilot used LDAPS host `demodc01.demo.tornbergs.consulting:636`. Use your configured restricted AD service account DN, search base and target label. All names in this page and the JSON examples are lab placeholders to adapt; they are not packaged server defaults.
 
 ## Test using Linux / RHEL
 
@@ -58,7 +45,7 @@ This prompts for AD credentials and sends them only over HTTPS. The client must 
 
 ```powershell
 $baseUrl = 'https://YOUR-SERVICE-HOST:8444'
-$credential = Get-Credential -UserName 'CN=Administrator,CN=Users,DC=demo,DC=tornbergs,DC=consulting'
+$credential = Get-Credential -UserName 'CN=YOUR_SERVICE_ACCOUNT,OU=Service Accounts,DC=demo,DC=tornbergs,DC=consulting'
 $body = Get-Content -Raw examples/demo-add.json | ConvertFrom-Json
 $body.changeItemId = '10001'
 

@@ -13,6 +13,8 @@ Java service receiving HTTPS provisioning requests and updating direct Active Di
 
 ## Install and configure
 
+Start with [Certificates and application.properties](docs/certificates-and-configuration.md). It explains the two TLS connections, how to obtain/create the certificate files, how to create the configuration file, and how to supply its passwords on Linux or Windows. Prepare these files before running the installer.
+
 The prebuilt distribution is `dist/quarkus-app`; copy the ENTIRE directory, including lib/app/quarkus. It was built with Java 17-compatible bytecode; run it on your approved Java 21. Source builds target Java 21 by default (`mvn clean verify`).
 
 Copy `examples/service-config.properties` to `config/application.properties` relative to the service working directory and replace every placeholder. Target, LDAP hostname/port, search base and allowed bind DN have no bundled defaults. Configure the HTTPS server keystore separately from LDAP trust. Keep certificates/passwords outside Git. The JSON `target` must exactly match `dps.target-name`; the GUID search base must encompass the current and possible new locations of user/group objects. AD ACLs remain the authorization boundary.
