@@ -1,5 +1,7 @@
 # Production pilot acceptance
 
+Status: accepted by the user on 2026-10-09 for version 0.4.0. The user reports all pilot validation tests passed; Windows service operation and Linux service operation are confirmed. The fresh Linux installation script was not explicitly confirmed tested and remains a separate deployment validation item.
+
 Confirmed by the user: real AD add/repeat/remove/repeat; IG fulfillment; GUID-based user and group moves without recollection; subsequent collection/publication changes pending verification to verified.
 
 Record HTTP code, safe response, correlation ID, resulting direct membership and IG state for each remaining check:
@@ -23,4 +25,4 @@ Record HTTP code, safe response, correlation ID, resulting direct membership and
 
 Concurrent opposing operations can legitimately finish with either state; successful responses describe the operation's observation, not a permanent guarantee. An object moving between resolution and write may require retry. Keep these tests in the lab or on designated pilot objects; restore test memberships afterward.
 
-Do not mark the pilot accepted until the restricted-account and failure tests are recorded. Functional success in the lab does not establish production operating readiness.
+The acceptance above is user-reported lab validation. This environment did not independently run those AD or OS service tests. Maintain the test evidence and repeat configuration/startup and request diagnostics checks for 0.5.0.

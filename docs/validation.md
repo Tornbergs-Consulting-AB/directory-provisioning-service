@@ -1,5 +1,7 @@
-# Version 0.4.0 validation
+# Version 0.5.0 validation
 
-Local Maven verification covers GUID encoding/resolution, direct membership semantics, HTTP validation and startup configuration limits. The user confirmed GUID user/group moves against real AD without collection, and IG collection/publication verification. Deployment wrappers and restricted-account/failure acceptance tests remain pending; see pilot-validation.md. Builds here use Java 17 compatibility; Java 21 host validation remains a deployment check.
+The user accepted the 0.4.0 pilot on 2026-10-09 and reports all pilot-validation checks passed. Linux systemd and Windows WinSW operation, GUID resolution after user/group moves and IG fulfillment verification after publication are confirmed by the user. No independent real AD validation was run in this environment. The fresh Linux installer test remains unconfirmed.
 
-Verification: 26 tests passed (6 request validation, 12 directory operations/GUID, 4 configuration checks, 4 HTTP contracts). Additional packaged production-profile checks passed: valid local HTTPS startup and health, incorrect LDAP truststore password prevents startup. systemd-analyze verify passed for the provided unit. No Windows service runtime or real AD failure testing was performed here.
+0.5.0 retains directory operations and adds mandatory external directory settings and opt-in JSON diagnostics. Build/check results are added below after verification. The local build uses Java 17 compatibility; the user tested earlier releases on Java 21.
+
+Verification completed: 33 Maven tests passed. Packaged HTTPS checks passed with body logging disabled/enabled at TRACE; unknown fields remained visible, invalid JSON/type errors returned structured 400 responses, and password/header sentinels were absent from console and file logs. Each missing required directory setting independently prevented packaged startup. No AD writes were performed in these local diagnostic checks.

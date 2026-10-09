@@ -1,4 +1,4 @@
-# Directory Provisioning Service — 0.4.0
+# Directory Provisioning Service — 0.5.0
 
 Java 21 / Quarkus / UnboundID LDAPS service. Implements add/remove direct AD group membership using DN or AD objectGUID identifiers.
 
@@ -34,9 +34,9 @@ Health: `https://<service-host>:8443/health`. It checks only the application; it
 
 ## Test
 
-See [DEMO setup and membership tests](docs/demo-setup.md). Use a LAB user/group and supplied credentials. No arbitrary LDAP URL is accepted. Allowed bind DN is compared as an LDAP DN, not as an arbitrary string. The configured administrator account is a LAB choice; AD ACLs control what it can change.
+See [DEMO setup and membership tests](docs/demo-setup.md). Use a LAB user/group and supplied credentials. No arbitrary LDAP URL is accepted. Allowed bind DN is compared as an LDAP DN, not as an arbitrary string. Configure the delegated service account explicitly; AD ACLs control what it can change.
 
-First version supports one configured target, DEMO. `dps.search-base` scopes subtree GUID searches; DN operations read the supplied DNs directly. It is **not** an authorization boundary.
+Supports one explicitly configured target. `dps.search-base` scopes subtree GUID searches; DN operations read the supplied DNs directly. It is **not** an authorization boundary.
 
 ## IG integration
 
@@ -63,3 +63,7 @@ Existing project initialization instructions apply. No GitHub repository has bee
 ## Operations and production pilot
 
 See [operations](docs/operations.md) for startup validation, diagnostics, Linux systemd and Windows WinSW templates, upgrade/rollback and certificate renewal. See [pilot acceptance checks](docs/pilot-validation.md). Production startup requires HTTPS with HTTP disabled and a loadable LDAP truststore. This release does not add multi-target support or DC failover.
+
+## 0.5.0 changes
+
+All directory connection/identity settings are mandatory external configuration. See [upgrade and default review](docs/upgrade-0.5.0.md). Optional redacted incoming JSON diagnostics work at DEBUG/TRACE with dps.log-request-payload=true. The user accepted the 0.4.0 lab pilot; repeat startup and a fulfillment after this upgrade.

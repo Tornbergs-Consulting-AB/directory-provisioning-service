@@ -1,4 +1,4 @@
-# Operations — 0.4.0
+# Operations — 0.5.0
 
 ## Startup and logs
 
@@ -10,7 +10,7 @@ INFO success logs include correlation ID, change item, request type, outcome and
 quarkus.log.category."consulting.tornbergs.directory".level=DEBUG
 ```
 
-No request bodies, authentication headers, passwords, GUID values or raw LDAP exceptions are logged. Resolved DNs are personal/organizational data: restrict access to logs. Default file rotation: logs/directory-provisioning-service.log, 10 MB, five backups. Protect both console and file logs. /health reports process availability, not LDAP readiness; authenticated GET /api/v1/provisioning checks TLS and bind.
+Payload logging is disabled by default. 0.5.0 adds opt-in redacted JSON diagnostics; see upgrade-0.5.0.md for configuration and redaction limits. Authentication headers and raw LDAP exceptions are not logged. Resolved DNs are personal/organizational data: restrict access to logs. Default file rotation: logs/directory-provisioning-service.log, 10 MB, five backups. Protect both console and file logs. /health reports process availability, not LDAP readiness; authenticated GET /api/v1/provisioning checks TLS and bind.
 
 ## Linux / RHEL systemd
 
@@ -82,3 +82,5 @@ Single target and single DC remain supported; failover and multiple targets are 
 
 - systemd execution/sandbox options: https://github.com/systemd/systemd/blob/main/man/systemd.exec.xml
 - WinSW installation: https://winsw.github.io/v2/doc/installation/
+
+Mandatory external directory settings and the full default review are in upgrade-0.5.0.md. Existing deployments must set target, LDAP host/port, search base and allowed bind DN explicitly.

@@ -55,4 +55,4 @@ No durable credential-bearing request queue. Membership operations are naturally
 
 ## Version 0.2 implementation
 
-DN path implemented for one DEMO target. changeItemId is mandatory and echoed in the response/comment. RequestId is correlation; fulfillmentId is iga-<changeItemId>, not a durable execution receipt. HTTPS required directly; no trust of forwarded-proto headers. Search base scopes GUID lookup. DN-based real AD add/repeat/remove/repeat validated by the user; GUID-based AD testing remains pending. Probe disabled by default.
+DN/GUID operations implemented for one explicitly configured target. changeItemId is mandatory and echoed in the response/comment. RequestId is correlation; fulfillmentId is iga-<changeItemId>, not a durable execution receipt. HTTPS required directly; no trust of forwarded-proto headers. Search base scopes GUID lookup. DN-based real AD add/repeat/remove/repeat validated by the user; User/group GUID moves, Linux and Windows services, and IG collection verification were validated by the user. Pilot accepted by the user on 2026-10-09. Probe disabled by default.
