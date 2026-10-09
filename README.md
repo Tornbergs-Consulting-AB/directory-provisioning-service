@@ -1,4 +1,4 @@
-# Directory Provisioning Service — 0.3.0
+# Directory Provisioning Service — 0.4.0
 
 Java 21 / Quarkus / UnboundID LDAPS service. Implements add/remove direct AD group membership using DN or AD objectGUID identifiers.
 
@@ -59,3 +59,7 @@ No failover, durable request ledger, credential caching, or automatic write retr
 TLS failures reject the request; never enable trust-all. LDAP referrals are not followed. Logs never intentionally include Authorization headers, passwords, payloads or raw LDAP exception messages. Keep third-party protocol loggers at INFO even when enabling application DEBUG/TRACE.
 
 Existing project initialization instructions apply. No GitHub repository has been created by this package, and no license has been selected.
+
+## Operations and production pilot
+
+See [operations](docs/operations.md) for startup validation, diagnostics, Linux systemd and Windows WinSW templates, upgrade/rollback and certificate renewal. See [pilot acceptance checks](docs/pilot-validation.md). Production startup requires HTTPS with HTTP disabled and a loadable LDAP truststore. This release does not add multi-target support or DC failover.

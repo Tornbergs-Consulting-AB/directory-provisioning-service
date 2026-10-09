@@ -22,6 +22,36 @@ public class LdapService {
     @ConfigProperty(name="dps.connect-timeout-ms") int connectTimeout;
     @ConfigProperty(name="dps.operation-timeout-ms") int operationTimeout;
     @ConfigProperty(name="dps.max-concurrent-requests") int maxConcurrent;
+    @ConfigProperty(name="dps.startup-validation",defaultValue="true") boolean startupValidation;
+    void onStart(@jakarta.enterprise.event.Observes io.quarkus.runtime.StartupEvent event) {
+        if (!startupValidation) {
+            LOG.warn("Startup configuration validation is disabled.");
+            return;
+        }
+        try {
+            ConfigurationChecks.validate(target,host,port,allowed,searchBase,connectTimeout,operationTimeout,maxConcurrent);
+            var config=org.eclipse.microprofile.config.ConfigProvider.getConfig();
+            if (!"disabled".equals(config.getOptionalValue("quarkus.http.insecure-requests",String.class).orElse("enabled")))
+                throw new IllegalArgumentException("HTTP must be disabled");
+            String keyStore=config.getOptionalValue("quarkus.http.ssl.certificate.key-store-file",String.class).orElse("");
+            if (keyStore.isBlank() || !java.nio.file.Files.isReadable(java.nio.file.Path.of(keyStore)))
+                throw new IllegalArgumentException("HTTPS keystore required");
+            if (truststore.isEmpty() || trustPassword.isEmpty()) throw new IllegalArgumentException("LDAP truststore required");
+            java.security.KeyStore trust=java.security.KeyStore.getInstance("PKCS12");
+            char[] secret=trustPassword.get().toCharArray();
+            try (var stream=java.nio.file.Files.newInputStream(java.nio.file.Path.of(truststore.get()))) {
+                trust.load(stream,secret);
+                if (trust.size()==0) throw new IllegalArgumentException("Empty LDAP truststore");
+            } finally { java.util.Arrays.fill(secret,'\0'); }
+            sockets();
+            slots();
+            LOG.info("Startup configuration validated; LDAP availability is checked only by authenticated connection tests.");
+        } catch (Exception e) {
+            LOG.error("Startup configuration validation failed. Check target, DNs, timeouts, HTTPS keystore and LDAP truststore settings.");
+            // Do not attach the cause: configuration exceptions can include sensitive values.
+            throw new IllegalStateException("Invalid directory service configuration; see configuration documentation.");
+        }
+    }
     private volatile Semaphore slots;
     private volatile SSLSocketFactory sockets;
 
@@ -70,6 +100,8 @@ public class LdapService {
                 DirectoryClient client=new DirectoryClient();
                 String userDN=client.resolve(connection,request.user(),searchBase);
                 String groupDN=client.resolve(connection,request.group(),searchBase);
+                LOG.debugf("request=%s object=user identifierType=%s resolvedDN=%s",correlation,request.user().guid()!=null?"GUID":"DN",userDN);
+                LOG.debugf("request=%s object=group identifierType=%s resolvedDN=%s",correlation,request.group().guid()!=null?"GUID":"DN",groupDN);
                 phase="membership";
                 return client.update(connection,userDN,groupDN,request.requestType().equals("ADD_PERMISSION_TO_USER"));
             }

@@ -1,0 +1,14 @@
+<service>
+  <id>DirectoryProvisioningService</id>
+  <name>Directory Provisioning Service</name>
+  <description>HTTPS provisioning gateway to Active Directory.</description>
+  <!-- Replace this path with your installed Java 21 path. -->
+  <executable>C:\Program Files\Eclipse Adoptium\jdk-21\bin\java.exe</executable>
+  <arguments>-jar "%BASE%\quarkus-app\quarkus-run.jar"</arguments>
+  <workingdirectory>%BASE%</workingdirectory>
+  <startmode>Automatic</startmode>
+  <stoptimeout>60 sec</stoptimeout>
+  <onfailure action="restart" delay="10 sec" />
+  <logpath>%BASE%\logs</logpath>
+  <log mode="roll" />
+</service>
