@@ -25,8 +25,29 @@ function canonicalGuid(value, label) {
 if (!/^[0-9]{1,20}$/.test(String(item.changeItemId))) {
     throw new Error('Missing or invalid changeItemId.');
 }
-var accountGuid = canonicalGuid(item.accountProfile && item.accountProfile.accountId, 'Account ID from Source');
-var permissionGuid = canonicalGuid(item.permissionProfile && item.permissionProfile.permissionId, 'Permission ID from Source');
+
+// Profiles can arrive as JSON strings or objects.
+function parseProfile(value, label) {
+    if (value === null || typeof value === 'undefined' || value === '') {
+        throw new Error('Missing ' + label + '.');
+    }
+    if (typeof value === 'string') {
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            throw new Error(label + ' contains invalid JSON.');
+        }
+    }
+    return value;
+}
+
+//var userProfile = parseProfile(item.userProfile, 'userProfile');
+var accountProfile = parseProfile(item.accountProfile, 'accountProfile')
+var permissionProfile = parseProfile(item.permissionProfile, 'permissionProfile');
+
+//var userGuid = canonicalGuid(userProfile.userId, 'User ID from Source');
+var accountGuid = canonicalGuid(accountProfile.accountId, 'Account ID from Source');
+var permissionGuid = canonicalGuid(permissionProfile.permissionId, 'Permission ID from Source');
 
 var body = {
     changeItemId: String(item.changeItemId),
