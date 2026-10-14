@@ -65,6 +65,19 @@ Structured failures contain `outcome=FAILED`, a machine-readable `code` and safe
 
 Use [ig-request-guid.js](../scripts/ig-request-guid.js) when `accountProfile.accountId` and `permissionProfile.permissionId` contain canonical AD objectGUIDs. Use [ig-request.js](../scripts/ig-request.js) for `accountProvId`/`permProvId` DNs. Update the example target DEMO in either script. Use [ig-headers.js](../scripts/ig-headers.js) for change-item correlation. Map response `fulfillmentId` and `comment` with the Generic REST Fulfiller response transformations.
 
+### Configure both response transformations
+
+The request script does not map the response. Configure these two separate response transformations in the Generic REST Fulfiller:
+
+| Response mapping | Sample script | Output |
+|---|---|---|
+| Fulfillment ID | [ig-response-fulfillment-id.js](../scripts/ig-response-fulfillment-id.js) | Service `fulfillmentId`, for example `iga-13955` |
+| Comment | [ig-response-comment.js](../scripts/ig-response-comment.js) | Service `comment`, including change item ID, operation, resolved DNs and any no-change explanation |
+
+Paste each script into its corresponding response transformation. Both receive the connector envelope in `inputValue`: `response_code`, `content_type` and `content`. The `content` property is itself the JSON string returned by the service, so the scripts parse both layers. They accept numeric or string HTTP 200 and `application/json` with optional charset parameters. The `dps...` variable names avoid redefining a script-engine global such as `status`.
+
+These samples are for fulfillment responses, not the connection-test response, which has no `fulfillmentId`. They require the service's HTTP 200 contract and the appropriate nonempty response field. Already-member/not-member outcomes are HTTP 200 and preserve their descriptive comments. The scripts do not control IG's HTTP error handling or verification; non-2xx bodies may never reach these transformations. Do not convert service failures to HTTP 200 merely to display their comments.
+
 In the lab, HTTP 200 led to completed fulfillment/pending verification; the next successful collection/publication verified the directory change. Already-member success preserved its descriptive comment. HTTP 400 and 503 led to RETRY with IG's generic client/server error rather than the service's detailed error body. Correlate the IG change item with service logs for diagnosis. These observations do not establish IG behavior for every error status/version.
 
 IG must provide the intended account, especially for multi-account identities. Sub-applications can omit account context in the generic REST payload; do not substitute the identity ID or select an arbitrary account. That integration limitation is outside the accepted 1.0.0 scope.
