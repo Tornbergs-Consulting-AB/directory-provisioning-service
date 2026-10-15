@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-VERSION = '1.0.0'
+VERSION = ET.parse(ROOT / 'pom.xml').getroot().find('{http://maven.apache.org/POM/4.0.0}version').text
 
 
 def sha256(path):
@@ -52,7 +52,7 @@ def main():
     ET.parse(ROOT / 'deployment/windows/directory-provisioning-service.xml')
     for path in files:
         assert path.suffix.lower() not in {'.exe', '.dll', '.p12', '.jks'}, 'Unexpected executable/key material: ' + str(path)
-    app_jar = ROOT / 'dist/quarkus-app/app/directory-provisioning-service-1.0.0.jar'
+    app_jar = ROOT / f'dist/quarkus-app/app/directory-provisioning-service-{VERSION}.jar'
     with zipfile.ZipFile(app_jar) as archive:
         assert archive.read('META-INF/LICENSE') == (ROOT / 'LICENSE').read_bytes()
         assert archive.read('META-INF/NOTICE') == (ROOT / 'NOTICE').read_bytes()
@@ -62,7 +62,7 @@ def main():
     destination = ROOT.parent / f'directory-provisioning-service-{VERSION}.zip'
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
-            archive.write(path, ROOT.name + '/' + str(path.relative_to(ROOT)))
+            archive.write(path, 'directory-provisioning-service/' + str(path.relative_to(ROOT)))
     with zipfile.ZipFile(destination) as archive:
         assert archive.testzip() is None, 'Release archive failed CRC check'
     print('PASS: runtime/source hashes, JAR integrity, licence coverage, Markdown links, shell syntax, Windows XML')

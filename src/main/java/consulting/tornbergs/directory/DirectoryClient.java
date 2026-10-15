@@ -19,6 +19,25 @@ public final class DirectoryClient {
             throw new Api.Failure(409,"AMBIGUOUS_IDENTIFIER","GUID lookup returned multiple objects.");
         return result.getSearchEntries().get(0).getDN();
     }
+    /** Delete one AD user by its immutable GUID, even if its DN changes after inspection.
+     * AD alternative DN syntax is required; no tree-delete or other delete controls are sent.
+     */
+    public Outcome deleteAccount(LDAPInterface ldap, Api.ObjectRef ref, String searchBase) throws LDAPException {
+        String dn=resolve(ldap,ref,searchBase);
+        SearchResultEntry entry=ldap.getEntry(dn,"objectClass","objectGUID");
+        if (entry==null) throw new Api.Failure(404,"OBJECT_NOT_FOUND","Account was not found or is not visible to the bind account.");
+        if (!entry.hasAttributeValue("objectClass","user") || entry.hasAttributeValue("objectClass","computer"))
+            throw new Api.Failure(400,"INVALID_USER_OBJECT","Target account must be an AD user, not a computer or group.");
+        byte[] guid=entry.getAttributeValueBytes("objectGUID");
+        if (guid==null || guid.length!=16)
+            throw new Api.Failure(409,"ACCOUNT_GUID_UNAVAILABLE","Account objectGUID must be readable before deletion.");
+        if (ref.guid()!=null && !java.util.Arrays.equals(guid,AdGuid.bytes(ref.guid())))
+            throw new Api.Failure(409,"ACCOUNT_CHANGED","Account changed during GUID resolution; no deletion attempted.");
+        // Never delete by a previously read DN: it could now identify a different object.
+        String stableName="<GUID="+java.util.HexFormat.of().formatHex(guid)+">";
+        ldap.delete(new DeleteRequest(stableName));
+        return new Outcome(true,"ACCOUNT_DELETED",entry.getDN(),null);
+    }
     private boolean isDirectMember(LDAPInterface ldap, String groupDN, String userDN) throws LDAPException {
         try {
             return ldap.compare(groupDN,"member",userDN).compareMatched();

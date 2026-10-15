@@ -72,13 +72,13 @@ public class LdapService {
         }
         return sockets;
     }
-    public DirectoryClient.Outcome update(Api.MembershipRequest request, String username, String password, String correlation) {
+    public DirectoryClient.Outcome update(Api.ProvisioningRequest request, String username, String password, String correlation) {
         return execute(request,username,password,correlation);
     }
     public void checkConnection(String username, String password, String correlation) {
         execute(null,username,password,correlation);
     }
-    private DirectoryClient.Outcome execute(Api.MembershipRequest request, String username, String password, String correlation) {
+    private DirectoryClient.Outcome execute(Api.ProvisioningRequest request, String username, String password, String correlation) {
         if (request!=null && !target.equals(request.target())) throw new Api.Failure(400,"UNKNOWN_TARGET","Unknown target.");
         try {
             if (!new DN(allowed).equals(new DN(username)))
@@ -100,6 +100,12 @@ public class LdapService {
                 if (request==null) return null;
                 phase="resolve";
                 DirectoryClient client=new DirectoryClient();
+                if (request.requestType().equals("REMOVE_ACCOUNT")) {
+                    phase="delete-account";
+                    var result=client.deleteAccount(connection,request.account(),searchBase);
+                    LOG.debugf("request=%s object=account identifierType=%s resolvedDN=%s",correlation,request.account().guid()!=null?"GUID":"DN",result.userDN());
+                    return result;
+                }
                 String userDN=client.resolve(connection,request.user(),searchBase);
                 String groupDN=client.resolve(connection,request.group(),searchBase);
                 LOG.debugf("request=%s object=user identifierType=%s resolvedDN=%s",correlation,request.user().guid()!=null?"GUID":"DN",userDN);

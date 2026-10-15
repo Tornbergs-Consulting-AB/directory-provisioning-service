@@ -1,10 +1,13 @@
-# Directory Provisioning Service — 1.0.0
+# Directory Provisioning Service — 1.1.0-SNAPSHOT
 
 Java service receiving HTTPS provisioning requests and updating direct Active Directory group membership over LDAPS. Runs on Linux and Windows. Identifies users/groups by DN or canonical AD objectGUID; GUID lookup resolves their current DNs before changing one member value.
+
+This development version adds AD user account deletion. See [the deletion validation and upgrade notes](docs/account-deletion.md). Version 1.0.0 remains the published membership-only release.
 
 ## Release scope
 
 - POST `/api/v1/provisioning`: ADD_PERMISSION_TO_USER, REMOVE_ACCOUNT_PERMISSION and REMOVE_PERMISSION_ASSIGNMENT.
+- `REMOVE_ACCOUNT` deletes one AD user using an explicit account DN or GUID; requires an updated service build.
 - Already present/absent direct membership returns HTTP 200 with an UNCHANGED outcome.
 - GET on the same endpoint tests LDAP TLS and caller-supplied AD credentials without modifying objects.
 - GET `/health` reports application version/liveness; it does not bind to AD.
@@ -26,6 +29,8 @@ Copy `examples/service-config.properties` to `config/application.properties` rel
 - Upgrade/rollback and known limits: [docs/release-1.0.0.md](docs/release-1.0.0.md).
 
 ## IG integration
+
+Preconfigured target imports with embedded request/response scripts are available in [IG target imports](docs/ig-import.md). Choose the account GUID or identity GUID variant and complete the post-import checklist. Sandbox import validation is still required.
 
 Use `scripts/ig-request-guid.js` when accountProfile.accountId and permissionProfile.permissionId contain canonical AD objectGUID values. Use `scripts/ig-request.js` for DN references from accountProvId/permProvId. `scripts/ig-headers.js` adds change-item correlation. Scripts use the example target DEMO; update it to your configured label. Preserve account selection/context; do not substitute the identity identifier for an account identifier. Sub-applications that omit account context remain an integration limitation.
 

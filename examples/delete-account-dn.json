@@ -1,0 +1,8 @@
+{
+  "changeItemId": "114",
+  "target": "DEMO",
+  "requestType": "REMOVE_ACCOUNT",
+  "account": {
+    "dn": "CN=Disposable Account,OU=Users,DC=example,DC=com"
+  }
+}

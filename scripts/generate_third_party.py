@@ -181,7 +181,7 @@ def main():
         for name, url in pool.map(download_netty, netty_files):
             upstream['license/' + name] = url
     (supplemental / 'provenance.json').write_text(json.dumps(upstream, indent=2) + '\n')
-    inventory = {'project': 'directory-provisioning-service', 'version': '1.0.0',
+    inventory = {'project': 'directory-provisioning-service', 'version': ET.parse(ROOT / 'pom.xml').getroot().find('m:version', NS).text,
                  'scope': 'Exact runtime JAR inventory; embedded/native code is additionally covered by retained and supplemental notices.',
                  'components': records}
     (base / 'runtime-components.json').write_text(json.dumps(inventory, indent=2, sort_keys=True) + '\n')
@@ -189,7 +189,7 @@ def main():
     # intentionally not claimed as exhaustively modeled by this generated SBOM.
     sbom = {'bomFormat': 'CycloneDX', 'specVersion': '1.6', 'version': 1,
             'metadata': {'component': {'type': 'application', 'name': 'directory-provisioning-service',
-                                      'group': 'consulting.tornbergs', 'version': '1.0.0',
+                                      'group': 'consulting.tornbergs', 'version': ET.parse(ROOT / 'pom.xml').getroot().find('m:version', NS).text,
                                       'licenses': [{'license': {'id': 'Apache-2.0'}}]}},
             'components': []}
     for record in records:
@@ -201,7 +201,7 @@ def main():
                                   'licenses': [{'license': licence}],
                                   'properties': [{'name': 'dps:runtime-file', 'value': record['runtimeFile']}]})
     (base / 'sbom.cdx.json').write_text(json.dumps(sbom, indent=2) + '\n')
-    header = '''# Third-party notices — 1.0.0
+    header = '''# Third-party notices
 
 Project code is licensed under Apache-2.0. Bundled libraries retain their own licences and copyrights. The following table describes the exact runtime distribution, including inherited Maven licence declarations. Choosing our project licence does not relicense these components.
 

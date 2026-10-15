@@ -11,7 +11,7 @@ import java.util.UUID;
 public class ProbeResource {
     @ConfigProperty(name="dps.probe-enabled") boolean enabled;
     @POST @Path("/{scenario}") @Consumes(MediaType.APPLICATION_JSON)
-    public Response probe(@PathParam("scenario") String scenario, Api.MembershipRequest r,
+    public Response probe(@PathParam("scenario") String scenario, Api.ProvisioningRequest r,
                           @HeaderParam("Authorization") String auth,@HeaderParam("X-Correlation-ID") String header) {
         String id=header!=null && header.matches("[A-Za-z0-9._:-]{1,128}")?header:UUID.randomUUID().toString();
         if (!enabled) return ProvisioningResource.response(404,null,id);

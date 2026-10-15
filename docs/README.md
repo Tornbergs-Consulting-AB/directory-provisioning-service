@@ -1,14 +1,16 @@
-# Documentation — 1.0.0
+# Documentation — 1.1.0-SNAPSHOT
 
-These documents describe the current release. Earlier upgrade notes and development milestones have been consolidated into the current configuration, design and release documentation.
+The account-deletion and API/import guides describe the development version; release-1.0.0.md documents the published baseline. Earlier upgrade notes and development milestones have been consolidated into the current configuration, design and release documentation.
 
 | Document | Purpose |
 |---|---|
+| [Account deletion](account-deletion.md) | 1.1.0-SNAPSHOT upgrade, payloads, deletion semantics and real AD/IG validation |
 | [Start here: certificates and application.properties](certificates-and-configuration.md) | First installation: certificate roles, lab/production creation, file layout, passwords and connection test |
 | [Configuration](configuration.md) | Required settings, defaults, TLS and JSON diagnostics |
 | [Operations](operations.md) | Linux/Windows services, logs, monitoring and certificate renewal |
 | [Linux installer](../deployment/linux/README.md) | Fresh installation on Linux/RHEL |
 | [Windows passwords](../deployment/windows/password-setup.md) | Supplying keystore/truststore passwords to the service |
+| [IG target imports](ig-import.md) | Sanitized account/identity GUID target exports, embedded transformations and post-import checklist |
 | [API and IG integration](api-and-ig.md) | Current request/response contract and IG scripts |
 | [Design](design.md) | Implemented architecture and directory semantics |
 | [Directory target](directory-target.md) | Logical target label and accepted single-DC limitation |
