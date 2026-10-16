@@ -1,14 +1,14 @@
-# Account deletion — 1.1.0-SNAPSHOT lab validation
+# Account deletion — 1.3.1-SNAPSHOT lab validation
 
-REMOVE_ACCOUNT deletes an AD user account. It does not disable it, unlink it from its identity or merely remove memberships. This is a development build; version 1.0.0 remains unchanged. No real AD deletion has been performed by the development checks.
+REMOVE_ACCOUNT and REMOVE_APPLICATION_FROM_USER delete one AD user account per request. It does not disable it, unlink it from its identity or merely remove memberships. This is a development build; version 1.0.0 remains unchanged. No real AD deletion has been performed by the development checks.
 
 ## Upgrade and configure
 
 1. Apply the source patch and build using Java 21: `mvn clean verify`. The output is the entire `target/quarkus-app` folder, not just quarkus-run.jar.
-2. Stop the service. Back up the current runtime, configuration and IG target export. Replace the entire installed `quarkus-app` folder with the new output, retaining protected configuration, certificate files and service environment/password settings. Restart and check `/health` reports `1.1.0-SNAPSHOT`.
+2. Stop the service. Back up the current runtime, configuration and IG target export. Replace the entire installed `quarkus-app` folder with the new output, retaining protected configuration, certificate files and service environment/password settings. Restart and check `/health` reports `1.3.1-SNAPSHOT`.
 3. Ensure the permitted AD bind principal has the AD rights needed to delete the intended test account, in addition to existing read/member rights. Existing protection from accidental deletion can prevent the operation. These rights are controlled by AD; the service does not grant or bypass them.
 4. Update IG's request transformation. `scripts/ig-request-guid.js` uses accountProfile.accountId. `scripts/ig-request-user-guid.js` also uses accountProfile.accountId for deletion, even though it uses the identity GUID for membership. `scripts/ig-request.js` uses accountProvId for DN requests. Include the relevant account context in IG's input mapping.
-5. Enable REMOVE_ACCOUNT in the IG Generic REST target's supported change types and application routing, or sandbox-import the regenerated example. Review all post-import settings in [IG target imports](ig-import.md). Existing fulfillment ID/comment response mappings remain valid.
+5. Enable REMOVE_ACCOUNT and REMOVE_APPLICATION_FROM_USER in the IG Generic REST target's supported change types and application routing, or sandbox-import the regenerated example. Review all post-import settings in [IG target imports](ig-import.md). Existing fulfillment ID/comment response mappings remain valid.
 
 A new service binary is required; changing only the IG script is insufficient. The temporary discovery envelope (`context`) must be replaced by the operation-specific `account` payload. Example payloads: [GUID](../examples/delete-account-guid.json), [DN](../examples/delete-account-dn.json). Replace their synthetic object identifiers and target label before testing.
 
@@ -33,3 +33,7 @@ A timeout may mean the delete completed but its response was lost. The service p
 Run `mvn clean verify`, `python scripts/generate_ig_imports.py --check` and `node scripts/verify_ig_imports.js`. Directory tests emulate AD's GUID-name delete in a generic in-memory LDAP fixture. They cover stable targeting during DN reuse, object types, missing accounts, missing GUID, denied/timed-out operations and no recursive deletion. They do not prove actual AD extension behavior, ACL policy or IG verification.
 
 If validation fails, stop the service and restore the complete prior runtime and prior IG transformation/routing. Disable REMOVE_ACCOUNT routing when rolling back to 1.0.0; configuration/certificates remain external. Rolling back software does not restore deleted AD accounts.
+
+## References and business roles
+
+Deletion requires an explicit selected account DN or GUID. employeeID/workforceId/custom references are forbidden, including when the account is absent from IG. Missing account context must be corrected through collection/context mapping, never guessed. See [business-role provisioning](business-role-provisioning.md) for initial membership reference handling and role-removal validation, and [AD delegation](ad-delegation.md) for required rights.

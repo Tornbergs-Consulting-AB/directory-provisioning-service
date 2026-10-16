@@ -17,9 +17,9 @@ class ValidationTest {
   var r=new Api.ProvisioningRequest("81",null,"DEMO","ADD_PERMISSION_TO_USER",new Api.ObjectRef(null,"guid"),new Api.ObjectRef("cn=g,dc=e",null));
   assertEquals("INVALID_IDENTIFIER",assertThrows(Api.Failure.class,()->ProvisioningResource.validate(r)).code);
  }
- @Test void rejectAccountCreation(){
+ @Test void rejectCreationWithMembershipFields(){
   var r=new Api.ProvisioningRequest("81",null,"DEMO","ADD_APPLICATION_TO_USER",new Api.ObjectRef("cn=u,dc=e",null),new Api.ObjectRef("cn=g,dc=e",null));
-  assertEquals("UNSUPPORTED_OPERATION",assertThrows(Api.Failure.class,()->ProvisioningResource.validate(r)).code);
+  assertEquals("INVALID_REQUEST",assertThrows(Api.Failure.class,()->ProvisioningResource.validate(r)).code);
  }
 
  @Test void acceptGuidAndMixedIdentifiers(){

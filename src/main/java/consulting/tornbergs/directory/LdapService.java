@@ -24,6 +24,12 @@ public class LdapService {
     @ConfigProperty(name="dps.connect-timeout-ms") int connectTimeout;
     @ConfigProperty(name="dps.operation-timeout-ms") int operationTimeout;
     @ConfigProperty(name="dps.max-concurrent-requests") int maxConcurrent;
+    @ConfigProperty(name="dps.creation-allowed-attributes",defaultValue="sAMAccountName,userPrincipalName,givenName,sn,displayName,title,department,mail,description") String creationAllowed;
+    @ConfigProperty(name="dps.creation-required-attributes",defaultValue="sAMAccountName,userPrincipalName,givenName,sn") String creationRequired;
+    @ConfigProperty(name="dps.creation-max-suffix",defaultValue="100") int creationMaxSuffix;
+    @ConfigProperty(name="dps.account-reference-wait-ms",defaultValue="10000") int accountReferenceWait;
+    // One creation at a time per service instance, irrespective of caller credentials.
+    private final java.util.concurrent.locks.ReentrantLock creationLock=new java.util.concurrent.locks.ReentrantLock();
     @ConfigProperty(name="dps.startup-validation",defaultValue="true") boolean startupValidation;
     void onStart(@jakarta.enterprise.event.Observes io.quarkus.runtime.StartupEvent event) {
         if (!startupValidation) {
@@ -32,6 +38,12 @@ public class LdapService {
         }
         try {
             ConfigurationChecks.validate(target,host,port,allowed,searchBase,connectTimeout,operationTimeout,maxConcurrent);
+            var allowedCreation=AccountCreation.configuredNames(creationAllowed);
+            var requiredCreation=AccountCreation.configuredNames(creationRequired);
+            if(accountReferenceWait<0 || accountReferenceWait>30000)throw new IllegalArgumentException("Invalid reference wait");
+            if(creationMaxSuffix<0 || creationMaxSuffix>1000 || !allowedCreation.containsAll(requiredCreation)
+                || !requiredCreation.containsAll(java.util.Set.of("samaccountname","userprincipalname")))
+                throw new IllegalArgumentException("Invalid creation policy");
             var config=org.eclipse.microprofile.config.ConfigProvider.getConfig();
             if (!"disabled".equals(config.getOptionalValue("quarkus.http.insecure-requests",String.class).orElse("enabled")))
                 throw new IllegalArgumentException("HTTP must be disabled");
@@ -100,15 +112,22 @@ public class LdapService {
                 if (request==null) return null;
                 phase="resolve";
                 DirectoryClient client=new DirectoryClient();
-                if (request.requestType().equals("REMOVE_ACCOUNT")) {
+                if(request.requestType().equals("ADD_APPLICATION_TO_USER")) {
+                    phase="create-account";
+                    var plan=AccountCreation.validate(request.creation(),creationAllowed,creationRequired,creationMaxSuffix);
+                    if(!creationLock.tryLock())throw new Api.Failure(503,"CREATION_BUSY","Another creation is in progress; retry later.");
+                    try{return AccountCreation.create(connection,plan);}
+                    finally{creationLock.unlock();}
+                }
+                if (ProvisioningResource.isDeletion(request.requestType())) {
                     phase="delete-account";
                     var result=client.deleteAccount(connection,request.account(),searchBase);
-                    LOG.debugf("request=%s object=account identifierType=%s resolvedDN=%s",correlation,request.account().guid()!=null?"GUID":"DN",result.userDN());
+                    LOG.debugf("request=%s object=account identifierType=%s resolvedDN=%s",correlation,request.account().identifierType(),result.userDN());
                     return result;
                 }
-                String userDN=client.resolve(connection,request.user(),searchBase);
+                String userDN=client.resolveForMembership(connection,request.user(),searchBase,request.requestType().equals("ADD_PERMISSION_TO_USER"),accountReferenceWait);
                 String groupDN=client.resolve(connection,request.group(),searchBase);
-                LOG.debugf("request=%s object=user identifierType=%s resolvedDN=%s",correlation,request.user().guid()!=null?"GUID":"DN",userDN);
+                LOG.debugf("request=%s object=user identifierType=%s resolvedDN=%s",correlation,request.user().identifierType(),userDN);
                 LOG.debugf("request=%s object=group identifierType=%s resolvedDN=%s",correlation,request.group().guid()!=null?"GUID":"DN",groupDN);
                 phase="membership";
                 return client.update(connection,userDN,groupDN,request.requestType().equals("ADD_PERMISSION_TO_USER"));

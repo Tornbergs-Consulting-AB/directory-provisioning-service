@@ -62,10 +62,12 @@ public class ProvisioningResource {
             validate(request);
             String[] credentials=credentials(auth);
             DirectoryClient.Outcome result=ldap.update(request,credentials[0],credentials[1],correlation);
-            boolean deleting=request.requestType().equals("REMOVE_ACCOUNT");
+            boolean deleting=isDeletion(request.requestType());
+            boolean creating=request.requestType().equals("ADD_APPLICATION_TO_USER");
             String suffix=result.changed()?"":" No change required: "+(result.code().equals("ALREADY_MEMBER")?"already a direct member.":"not a direct member.");
-            String comment="Change Item '"+item+"' Fulfilled. Type: "+request.requestType()+", Target Account: "+result.userDN()+(deleting?". Account deleted.":", Target Permission: "+result.groupDN()+suffix);
-            var reply=new Api.Reply(item,correlation,"iga-"+item,result.changed()?"CHANGED":"UNCHANGED",result.code(),comment,result.userDN(),result.groupDN());
+            String comment="Change Item '"+item+"' Fulfilled. Type: "+request.requestType()+", Target Account: "+result.userDN()+(creating?(result.changed()?". Disabled account created.":". No change required: matching disabled account already exists.")+" Account name: "+result.accountName()+", UPN: "+result.upn():
+                    deleting?". Account deleted.":", Target Permission: "+result.groupDN()+suffix);
+            var reply=new Api.Reply(item,correlation,"iga-"+item,result.changed()?"CHANGED":"UNCHANGED",result.code(),comment,result.userDN(),result.groupDN(),result.accountName(),result.upn());
             status=200;
             LOG.infof("request=%s changeItem=%s operation=%s outcome=%s code=%s",correlation,item,request.requestType(),result.changed()?"CHANGED":"UNCHANGED",result.code());
             return response(status,reply,correlation);
@@ -81,20 +83,36 @@ public class ProvisioningResource {
     static void validate(Api.ProvisioningRequest r) {
         if (r==null || r.changeItemId()==null || !r.changeItemId().matches("[0-9]{1,20}") || r.target()==null)
             throw new Api.Failure(400,"INVALID_REQUEST","changeItemId and target are required.");
-        if (r.requestType()==null || !Set.of("ADD_PERMISSION_TO_USER","REMOVE_ACCOUNT_PERMISSION","REMOVE_PERMISSION_ASSIGNMENT","REMOVE_ACCOUNT").contains(r.requestType()))
+        if (r.requestType()==null || !Set.of("ADD_PERMISSION_TO_USER","REMOVE_ACCOUNT_PERMISSION","REMOVE_PERMISSION_ASSIGNMENT","REMOVE_ACCOUNT","REMOVE_APPLICATION_FROM_USER","ADD_APPLICATION_TO_USER").contains(r.requestType()))
             throw new Api.Failure(400,"UNSUPPORTED_OPERATION","Unsupported requestType.");
-        if (r.requestType().equals("REMOVE_ACCOUNT")) {
+        if(r.requestType().equals("ADD_APPLICATION_TO_USER")) {
+            if(r.user()!=null || r.group()!=null || r.account()!=null || r.creation()==null)
+                throw new Api.Failure(400,"INVALID_REQUEST","Account creation requires creation only; omit user, group and account.");
+            return;
+        }
+        if(r.creation()!=null)throw new Api.Failure(400,"INVALID_REQUEST","creation is valid only for ADD_APPLICATION_TO_USER.");
+        if (isDeletion(r.requestType())) {
             if (r.user()!=null || r.group()!=null)
-                throw new Api.Failure(400,"INVALID_REQUEST","REMOVE_ACCOUNT requires account only; omit user and group.");
+                throw new Api.Failure(400,"INVALID_REQUEST","Account deletion requires account only; omit user and group.");
             validateRef(r.account());
+            if(r.account().reference()!=null) throw new Api.Failure(400,"INVALID_IDENTIFIER","Account deletion requires an explicit dn or guid; references are not allowed.");
         } else {
             if (r.account()!=null) throw new Api.Failure(400,"INVALID_REQUEST","Membership operations require user and group; omit account.");
             validateRef(r.user()); validateRef(r.group());
+            if(r.user().reference()!=null && !"ADD_PERMISSION_TO_USER".equals(r.requestType()))
+                throw new Api.Failure(400,"INVALID_IDENTIFIER","Account references are allowed only for membership additions, not removals.");
+            if(r.group().reference()!=null) throw new Api.Failure(400,"INVALID_IDENTIFIER","Groups require dn or guid, not an account reference.");
         }
     }
+    static boolean isDeletion(String type) { return "REMOVE_ACCOUNT".equals(type) || "REMOVE_APPLICATION_FROM_USER".equals(type); }
     private static void validateRef(Api.ObjectRef r) {
-        if (r==null || (r.dn()!=null)==(r.guid()!=null))
-            throw new Api.Failure(400,"INVALID_IDENTIFIER","Supply exactly one of dn or guid for each object.");
+        if (r==null || (r.dn()!=null?1:0)+(r.guid()!=null?1:0)+(r.reference()!=null?1:0)!=1)
+            throw new Api.Failure(400,"INVALID_IDENTIFIER","Supply exactly one of dn, guid or reference for each account/user.");
+        if(r.reference()!=null) {
+            if(r.reference().isBlank() || r.reference().length()>16 || r.reference().chars().anyMatch(c->Character.isISOControl(c)))
+                throw new Api.Failure(400,"INVALID_REFERENCE","employeeID reference must contain 1 to 16 characters without control characters.");
+            return;
+        }
         if (r.guid()!=null) {
             AdGuid.bytes(r.guid());
             return;

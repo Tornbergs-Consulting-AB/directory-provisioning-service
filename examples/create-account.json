@@ -1,0 +1,19 @@
+{
+  "changeItemId": "116",
+  "target": "DEMO",
+  "requestType": "ADD_APPLICATION_TO_USER",
+  "creation": {
+    "reference": "123456-EMP",
+    "containerDN": "OU=Users,DC=example,DC=com",
+    "cn": "Daniel Persson",
+    "attributes": {
+      "sAMAccountName": "dpersson",
+      "userPrincipalName": "dpersson@example.com",
+      "givenName": "Daniel",
+      "sn": "Persson",
+      "displayName": "Daniel Persson",
+      "department": "Sales",
+      "title": "Account Manager"
+    }
+  }
+}

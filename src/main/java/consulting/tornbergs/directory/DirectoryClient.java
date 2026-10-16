@@ -6,8 +6,11 @@ import com.unboundid.ldap.sdk.*;
 
 /** LDAP operations use one caller-bound connection. Generic LDAP tests; AD tested separately. */
 public final class DirectoryClient {
-    public record Outcome(boolean changed, String code, String userDN, String groupDN) {}
+    public record Outcome(boolean changed, String code, String userDN, String groupDN, String accountName, String upn) {
+        public Outcome(boolean changed,String code,String userDN,String groupDN){this(changed,code,userDN,groupDN,null,null);}
+    }
     public String resolve(LDAPInterface ldap, Api.ObjectRef ref, String searchBase) throws LDAPException {
+        if(ref.reference()!=null) return resolveReference(ldap,ref.reference(),AccountCreation.domain(ldap));
         if (ref.guid()==null) return ref.dn();
         SearchRequest search=new SearchRequest(searchBase,SearchScope.SUB,
             Filter.createEqualityFilter("objectGUID",AdGuid.bytes(ref.guid())),"1.1");
@@ -19,10 +22,50 @@ public final class DirectoryClient {
             throw new Api.Failure(409,"AMBIGUOUS_IDENTIFIER","GUID lookup returned multiple objects.");
         return result.getSearchEntries().get(0).getDN();
     }
+    private String resolveReference(LDAPInterface ldap,String reference,String domain) throws LDAPException {
+        SearchRequest search=new SearchRequest(domain,SearchScope.SUB,
+            Filter.createEqualityFilter("employeeID",reference),"objectClass");
+        search.setSizeLimit(2);
+        SearchResult result;
+        try { result=ldap.search(search); }
+        catch(LDAPException e) {
+            if(e.getResultCode()==ResultCode.SIZE_LIMIT_EXCEEDED)
+                throw new Api.Failure(409,"REFERENCE_CONFLICT","Multiple objects match the employeeID reference; no change attempted.");
+            throw e;
+        }
+        if(result.getEntryCount()==0)throw new Api.Failure(404,"OBJECT_NOT_FOUND","Account reference was not found or is not visible to the bind account.");
+        if(result.getEntryCount()!=1)throw new Api.Failure(409,"REFERENCE_CONFLICT","Multiple objects match the employeeID reference; no change attempted.");
+        var entry=result.getSearchEntries().get(0);
+        if(!entry.hasAttributeValue("objectClass","user") || entry.hasAttributeValue("objectClass","computer"))
+            throw new Api.Failure(409,"REFERENCE_CONFLICT","Account reference does not identify an AD user.");
+        return entry.getDN();
+    }
+    /** Wait only for an account reference on membership additions, never replay a write. */
+    public String resolveForMembership(LDAPInterface ldap,Api.ObjectRef ref,String searchBase,boolean add,int waitMillis) throws LDAPException {
+        if(ref.reference()!=null && !add)throw new Api.Failure(400,"INVALID_IDENTIFIER","Account references are not allowed for membership removals.");
+        if(ref.reference()==null)return resolve(ldap,ref,searchBase);
+        String domain=AccountCreation.domain(ldap);
+        long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.MILLISECONDS.toNanos(waitMillis);
+        while(true) {
+            try { return resolveReference(ldap,ref.reference(),domain); }
+            catch(Api.Failure e) {
+                if(e.status!=404)throw e;
+                long left=deadline-System.nanoTime();
+                if(left<=0)throw new Api.Failure(503,"ACCOUNT_NOT_READY","Account reference is not yet visible in AD; complete account creation before retrying membership.");
+                try { java.util.concurrent.TimeUnit.NANOSECONDS.sleep(Math.min(left,250_000_000L)); }
+                catch(InterruptedException interrupted) {
+                    Thread.currentThread().interrupt();
+                    throw new Api.Failure(503,"ACCOUNT_NOT_READY","Account lookup interrupted; retry later.");
+                }
+            }
+        }
+    }
     /** Delete one AD user by its immutable GUID, even if its DN changes after inspection.
      * AD alternative DN syntax is required; no tree-delete or other delete controls are sent.
      */
     public Outcome deleteAccount(LDAPInterface ldap, Api.ObjectRef ref, String searchBase) throws LDAPException {
+        if(ref==null || ref.reference()!=null || (ref.dn()!=null)==(ref.guid()!=null))
+            throw new Api.Failure(400,"INVALID_IDENTIFIER","Account deletion requires exactly one explicit dn or guid; references are not allowed.");
         String dn=resolve(ldap,ref,searchBase);
         SearchResultEntry entry=ldap.getEntry(dn,"objectClass","objectGUID");
         if (entry==null) throw new Api.Failure(404,"OBJECT_NOT_FOUND","Account was not found or is not visible to the bind account.");
@@ -33,6 +76,7 @@ public final class DirectoryClient {
             throw new Api.Failure(409,"ACCOUNT_GUID_UNAVAILABLE","Account objectGUID must be readable before deletion.");
         if (ref.guid()!=null && !java.util.Arrays.equals(guid,AdGuid.bytes(ref.guid())))
             throw new Api.Failure(409,"ACCOUNT_CHANGED","Account changed during GUID resolution; no deletion attempted.");
+
         // Never delete by a previously read DN: it could now identify a different object.
         String stableName="<GUID="+java.util.HexFormat.of().formatHex(guid)+">";
         ldap.delete(new DeleteRequest(stableName));

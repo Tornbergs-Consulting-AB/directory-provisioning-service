@@ -1,6 +1,6 @@
 # Importable IG fulfillment targets
 
-These examples configure the Generic REST Fulfiller for the service's implemented direct-membership operations and REMOVE_ACCOUNT deletion. They embed the request, header, fulfillment ID and comment scripts, plus their input/output mappings. They do not add account creation or other unimplemented operations. REMOVE_ACCOUNT requires the 1.1.0-SNAPSHOT service or later; do not route it to 1.0.0.
+These examples configure the Generic REST Fulfiller for the service's implemented direct-membership operations and account creation/deletion. They embed the request, header, fulfillment ID and comment scripts, plus their input/output mappings. ADD_APPLICATION_TO_USER requires 1.2.0-SNAPSHOT; REMOVE_ACCOUNT requires 1.1.0-SNAPSHOT or later. Do not enable operations on older service builds. REMOVE_APPLICATION_FROM_USER and account-reference lookup require 1.3.1-SNAPSHOT. See [creation setup](account-creation.md) before enabling creation.
 
 ## Choose a variant
 
@@ -11,7 +11,7 @@ These examples configure the Generic REST Fulfiller for the service's implemente
 
 Membership operations obtain the group's objectGUID from `permissionProfile.permissionId`. Source values must be canonical dashed AD objectGUIDs, not IG internal IDs or raw base64. Profile inputs can be JSON objects or JSON-encoded strings. The account variant never falls back to an identity GUID. For membership, the identity variant does not honor a separately selected account: do not use it for an operation intended for a different account.
 
-**Both variants use `accountProfile.accountId` for REMOVE_ACCOUNT**, including the identity GUID variant. This avoids deleting a primary account merely because its identity requested removal of another account. Include accountProfile in the input context for both variants. Deletion needs no permissionProfile.
+**Both variants use `accountProfile.accountId` for deletion; selected account context is mandatory**, including the identity GUID variant. This avoids deleting a primary account merely because its identity requested removal of another account. Include accountProfile in the input context for both variants. Deletion needs no permissionProfile. Without selected account context, deletion fails before sending the request. It never uses the employeeID reference or identity GUID. See [business-role setup](business-role-provisioning.md) for creation and initial membership handling.
 
 The corresponding standalone request scripts are [ig-request-guid.js](../scripts/ig-request-guid.js) and [ig-request-user-guid.js](../scripts/ig-request-user-guid.js).
 
@@ -29,12 +29,13 @@ Use IG's fulfillment-target import action under Fulfillment > Configuration > Fu
 2. Keep **Basic authentication**. Replace `https://CHANGE-ME.invalid:8444` with the service's actual HTTPS base URL, without the provisioning path. Use the certificate's DNS name. `.invalid` is a deliberate non-working placeholder.
 3. Keep `/api/v1/provisioning` for both the connection-test path and the fulfillment path. Keep JSON content/accept types. The example read timeout is 60 seconds; review it against configured LDAP timeouts.
 4. Enter the permitted AD bind DN and password **inside IG**, and configure the connector's HTTPS trust for your service certificate/CA. The exported credential fields and environment-specific certificate values are empty. No AD credentials are stored in the product examples.
-5. Open the request-body transformation (`http_body`, mapped to Content). Change `var dpsTarget = 'CHANGE_ME';` to the exact `dps.target-name` from the service's `config/application.properties`. This is a script setting, not a new IG connection parameter. There is no assumed automatic substitution from the application name.
-6. Confirm that the content input mapping includes `changeItemId`, `changeRequestType`, the chosen `accountProfile` or `userProfile`, and `permissionProfile`. In IG's Fulfillment Context Attributes, expose the required source ID fields. Importing this target does not change those global attribute selections.
-7. Check the response mappings: **Fulfillment ID → `fulfillmentId` script → body.fulfillmentId**; **Comment → `comment` script → body.comment**. The swapped scripts in the supplied export have been corrected. Both mappings consume the connector envelope (`response_code`, `content_type`, `content`).
-8. Confirm only `ADD_PERMISSION_TO_USER`, `REMOVE_PERMISSION_ASSIGNMENT`, `REMOVE_ACCOUNT_PERMISSION` and `REMOVE_ACCOUNT` are enabled. Account creation and other operations remain disabled.
-9. Run Test Connection. It must return success after HTTPS validation and AD TLS/bind. Then route the three supported change types for a sandbox application to this target.
-10. Test one add, repeated add, remove and repeated remove on disposable objects. Confirm direct membership, change-item correlation, the correct fulfillment ID/comment, and final verification after collection/publication. For the account variant, confirm the selected account is the one changed.
+5. Configure `dpsCreationContainer` and `dpsCreationUpnSuffix` in the request script for creation, and review its reference expression and required userProfile fields. Both creation settings deliberately default to empty.
+6. Open the request-body transformation (`http_body`, mapped to Content). Change `var dpsTarget = 'CHANGE_ME';` to the exact `dps.target-name` from the service's `config/application.properties`. This is a script setting, not a new IG connection parameter. There is no assumed automatic substitution from the application name.
+7. Confirm that the content input mapping includes `changeItemId`, `changeRequestType`, the chosen `accountProfile` or `userProfile`, and `permissionProfile`. In IG's Fulfillment Context Attributes, expose the required source ID fields. Importing this target does not change those global attribute selections.
+8. Check the response mappings: **Fulfillment ID → `fulfillmentId` script → body.fulfillmentId**; **Comment → `comment` script → body.comment**. The swapped scripts in the supplied export have been corrected. Both mappings consume the connector envelope (`response_code`, `content_type`, `content`).
+9. Confirm only `ADD_PERMISSION_TO_USER`, `REMOVE_PERMISSION_ASSIGNMENT`, `REMOVE_ACCOUNT_PERMISSION` `REMOVE_ACCOUNT`, `REMOVE_APPLICATION_FROM_USER` and `ADD_APPLICATION_TO_USER` are enabled. Other operations remain disabled.
+10. Run Test Connection. It must return success after HTTPS validation and AD TLS/bind. Then route the desired supported change types for a sandbox application to this target.
+11. Test one add, repeated add, remove and repeated remove on disposable objects. Confirm direct membership, change-item correlation, the correct fulfillment ID/comment, and final verification after collection/publication. For the account variant, confirm the selected account is the one changed.
 
 Keep any later exports containing saved credentials or customer-specific configuration outside the public repository, even if passwords appear masked or encrypted.
 

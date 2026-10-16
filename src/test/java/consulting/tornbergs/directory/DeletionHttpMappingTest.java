@@ -21,7 +21,7 @@ class DeletionHttpMappingTest {
   });
   resource.ldap=new LdapService(){
    @Override public DirectoryClient.Outcome update(Api.ProvisioningRequest r,String user,String password,String correlation){
-    calls.incrementAndGet();assertEquals("REMOVE_ACCOUNT",r.requestType());assertEquals(guid,r.account().guid());
+    calls.incrementAndGet();assertTrue(ProvisioningResource.isDeletion(r.requestType()));if(r.account().reference()!=null)assertEquals("123456-EMP",r.account().reference());else assertEquals(guid,r.account().guid());
     assertNull(r.user());assertNull(r.group());
     return new DirectoryClient.Outcome(true,"ACCOUNT_DELETED","cn=Account,dc=example,dc=com",null);
    }
@@ -35,6 +35,18 @@ class DeletionHttpMappingTest {
   assertEquals(200,response.getStatus());assertEquals(1,calls.get());
   var reply=(Api.Reply)response.getEntity();assertEquals("ACCOUNT_DELETED",reply.code());assertEquals("iga-114",reply.fulfillmentId());
   assertTrue(reply.comment().contains("Change Item '114' Fulfilled. Type: REMOVE_ACCOUNT"));assertFalse(reply.comment().contains("Target Permission"));assertNull(reply.groupDN());
+ }
+ @Test void applicationRemovalUsesDeletionCommentAndStatus() {
+  var calls=new AtomicInteger();
+  var response=resource(calls).update("{\"changeItemId\":\"117\",\"target\":\"DEMO\",\"requestType\":\"REMOVE_APPLICATION_FROM_USER\",\"account\":{\"guid\":\""+guid+"\"}}",auth(),"iga-117");
+  assertEquals(200,response.getStatus());assertEquals(1,calls.get());
+  var reply=(Api.Reply)response.getEntity();assertTrue(reply.comment().contains("Type: REMOVE_APPLICATION_FROM_USER"));
+  assertTrue(reply.comment().endsWith("Account deleted."));assertFalse(reply.comment().contains("Target Permission"));
+ }
+ @Test void referencePayloadIsRejectedForApplicationRemoval() {
+  var calls=new AtomicInteger();
+  var response=resource(calls).update("{\"changeItemId\":\"118\",\"target\":\"DEMO\",\"requestType\":\"REMOVE_APPLICATION_FROM_USER\",\"account\":{\"reference\":\"123456-EMP\"}}",auth(),"iga-118");
+  assertEquals(400,response.getStatus());assertEquals(0,calls.get());
  }
  @Test void discoveryEnvelopeDoesNotDelete() {
   var calls=new AtomicInteger();

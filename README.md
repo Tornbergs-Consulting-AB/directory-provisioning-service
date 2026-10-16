@@ -1,13 +1,15 @@
-# Directory Provisioning Service — 1.1.0-SNAPSHOT
+# Directory Provisioning Service — 1.3.1-SNAPSHOT
 
 Java service receiving HTTPS provisioning requests and updating direct Active Directory group membership over LDAPS. Runs on Linux and Windows. Identifies users/groups by DN or canonical AD objectGUID; GUID lookup resolves their current DNs before changing one member value.
 
-This development version adds AD user account deletion. See [the deletion validation and upgrade notes](docs/account-deletion.md). Version 1.0.0 remains the published membership-only release.
+This development version adds disabled AD account creation and retains account deletion. See [account creation](docs/account-creation.md) for customer-defined references, placement, attributes and naming. See [the deletion validation and upgrade notes](docs/account-deletion.md). Version 1.0.0 remains the published membership-only release.
 
 ## Release scope
 
+- `ADD_APPLICATION_TO_USER` creates a disabled user with an employeeID reference and bounded domain-level name suffixes.
+
 - POST `/api/v1/provisioning`: ADD_PERMISSION_TO_USER, REMOVE_ACCOUNT_PERMISSION and REMOVE_PERMISSION_ASSIGNMENT.
-- `REMOVE_ACCOUNT` deletes one AD user using an explicit account DN or GUID; requires an updated service build.
+- `REMOVE_ACCOUNT` / `REMOVE_APPLICATION_FROM_USER` delete one AD user using an explicit account DN or GUID; requires an updated service build.
 - Already present/absent direct membership returns HTTP 200 with an UNCHANGED outcome.
 - GET on the same endpoint tests LDAP TLS and caller-supplied AD credentials without modifying objects.
 - GET `/health` reports application version/liveness; it does not bind to AD.
@@ -44,12 +46,14 @@ The user accepted the lab pilot and validated Linux/Windows services, Linux inst
 
 ## Operational limits
 
-No DC failover, multi-target routing, user/account creation, durable ledger, credential caching or automatic write replay. All steps for a request use one caller-bound LDAP connection, closed afterward. LDAP referrals are not followed. Concurrent moves or unknown write outcomes may require reconciliation/retry. IG HTTP timeout must cover cumulative LDAP steps; initial recommendation is 60 seconds with default 5-second connect/operation timeouts.
+No DC failover, multi-target routing, account synchronization/activation/password delivery, durable ledger, credential caching or automatic write replay. All steps for a request use one caller-bound LDAP connection, closed afterward. LDAP referrals are not followed. Concurrent moves or unknown write outcomes may require reconciliation/retry. IG HTTP timeout must cover cumulative LDAP steps; initial recommendation is 60 seconds with default 5-second connect/operation timeouts.
 
 Probe endpoints are disabled by default. No production secrets or certificates are included.
 
 ## Documentation and licensing
 
-Start with the [1.0.0 documentation index](docs/README.md). Project source, scripts, deployment templates and documentation are licensed under [Apache-2.0](LICENSE), copyright 2026 Tornbergs Consulting AB. Third-party components keep their own licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third-party/`. Java 21 and WinSW are separately installed prerequisites and are not bundled.
+Start with the [documentation index](docs/README.md). Project source, scripts, deployment templates and documentation are licensed under [Apache-2.0](LICENSE), copyright 2026 Tornbergs Consulting AB. Third-party components keep their own licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third-party/`. Java 21 and WinSW are separately installed prerequisites and are not bundled.
 
 See [SUPPORT.md](SUPPORT.md) for best-effort maintenance and customer ownership of deployment, [CONTRIBUTING.md](CONTRIBUTING.md) for contributions, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [distribution instructions](docs/distribution.md) for release preparation. This archive does not publish an external repository.
+
+The 1.3.1-SNAPSHOT development build adds [business-role account/reference handling](docs/business-role-provisioning.md), REMOVE_APPLICATION_FROM_USER deletion, and [AD delegation guidance](docs/ad-delegation.md). Validate the updated role flow in the lab before deploying it.

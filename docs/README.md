@@ -1,10 +1,13 @@
-# Documentation — 1.1.0-SNAPSHOT
+# Documentation — 1.3.1-SNAPSHOT
 
 The account-deletion and API/import guides describe the development version; release-1.0.0.md documents the published baseline. Earlier upgrade notes and development milestones have been consolidated into the current configuration, design and release documentation.
 
 | Document | Purpose |
 |---|---|
-| [Account deletion](account-deletion.md) | 1.1.0-SNAPSHOT upgrade, payloads, deletion semantics and real AD/IG validation |
+| [Business-role provisioning](business-role-provisioning.md) | Reference lookup before IG collection, ordering, application removal and lab validation |
+| [AD delegation](ad-delegation.md) | Bind-account rights for lookup, creation, membership and deletion |
+| [Account creation](account-creation.md) | 1.3.1-SNAPSHOT creation contract, IG configuration, suffixes and retry matching |
+| [Account deletion](account-deletion.md) | 1.3.1-SNAPSHOT upgrade, payloads, deletion semantics and real AD/IG validation |
 | [Start here: certificates and application.properties](certificates-and-configuration.md) | First installation: certificate roles, lab/production creation, file layout, passwords and connection test |
 | [Configuration](configuration.md) | Required settings, defaults, TLS and JSON diagnostics |
 | [Operations](operations.md) | Linux/Windows services, logs, monitoring and certificate renewal |

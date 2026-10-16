@@ -14,7 +14,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / 'examples/ig'
-SUPPORTED = {'REMOVE_PERMISSION_ASSIGNMENT', 'ADD_PERMISSION_TO_USER', 'REMOVE_ACCOUNT_PERMISSION', 'REMOVE_ACCOUNT'}
+SUPPORTED = {'REMOVE_PERMISSION_ASSIGNMENT', 'ADD_PERMISSION_TO_USER', 'REMOVE_ACCOUNT_PERMISSION', 'REMOVE_ACCOUNT', 'REMOVE_APPLICATION_FROM_USER', 'ADD_APPLICATION_TO_USER'}
 # Only these non-secret, environment-independent parameter values are retained.
 PARAMETERS = {
     'use_bridge_connector': 0,
@@ -82,7 +82,7 @@ def build(seed, variant, target):
                 param['view-name'] = json.dumps([
                     'changeItemId', 'changeRequestType', 'fulfillmentInstructions', 'userName',
                     'appName', 'reason', 'requesterName', 'permName', 'accountProfile',
-                    *([] if profile == 'accountProfile' else [profile]), 'permissionProfile'
+                    'userProfile', 'permissionProfile'
                 ], separators=(',', ':'))
     result['dataCollectors']['arraySize'] = 1
     collector['configuration'] = json.dumps(config, ensure_ascii=False, separators=(',', ':'))

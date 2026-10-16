@@ -58,3 +58,11 @@ Redaction is based on field names, not a guarantee against secrets placed in arb
 | File logging | logs/directory-provisioning-service.log, rotation 10M / five backups |
 
 No outgoing AD DNS name, IP address or Administrator DN remains in packaged configuration. Example scripts still contain target DEMO, which must be changed to match deployment config; they are examples, not server defaults.
+
+## Account creation policy (1.2.0-SNAPSHOT)
+
+See [Account creation](account-creation.md) for placement from IG, employeeID references, single-valued text allowlists and domain name suffixes. Defaults: dps.creation-max-suffix=100; allowed attributes sAMAccountName,userPrincipalName,givenName,sn,displayName,title,department,mail,description; required attributes sAMAccountName,userPrincipalName,givenName,sn. Invalid policy configuration prevents startup.
+
+## Reference resolution wait (1.3.1-SNAPSHOT)
+
+`dps.account-reference-wait-ms=10000` is the default wait for missing employeeID references on membership additions (range 0–30000). The wait does not apply to DN/GUID lookup, membership removal or deletion. Allow additional LDAP-operation time in the IG read timeout. See [business-role provisioning](business-role-provisioning.md).

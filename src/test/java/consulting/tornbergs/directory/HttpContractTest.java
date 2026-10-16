@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 @QuarkusTest class HttpContractTest {
  @Test void healthDoesNotClaimLdapReady(){
-  given().get("/health").then().statusCode(200).body("ldap",equalTo("not checked"),"version",equalTo("1.1.0-SNAPSHOT"));
+  given().get("/health").then().statusCode(200).body("ldap",equalTo("not checked"),"version",equalTo("1.3.1-SNAPSHOT"));
  }
  @Test void rejectPlaintextRealOperation(){
   given().contentType("application/json").header("X-Correlation-ID","iga-81")

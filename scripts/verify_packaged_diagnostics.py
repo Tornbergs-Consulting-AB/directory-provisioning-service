@@ -61,7 +61,7 @@ quarkus.log.category."consulting.tornbergs.directory".level=TRACE
                     try:
                         with urllib.request.urlopen('https://localhost:18444/health', context=context, timeout=.5) as reply:
                             assert reply.status == 200
-                            assert json.loads(reply.read())["version"] == "1.1.0-SNAPSHOT"
+                            assert json.loads(reply.read())["version"] == "1.3.1-SNAPSHOT"
                         break
                     except (OSError, urllib.error.URLError):
                         time.sleep(.2)

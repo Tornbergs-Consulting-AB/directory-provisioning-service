@@ -1,4 +1,4 @@
-# API and IG integration — 1.1.0-SNAPSHOT
+# API and IG integration — 1.3.1-SNAPSHOT
 
 ## Endpoints
 
@@ -29,9 +29,15 @@ GUIDs are canonical hyphenated AD objectGUID values, not IG internal IDs. Supply
 | ADD_PERMISSION_TO_USER | Add the user as a direct group member |
 | REMOVE_ACCOUNT_PERMISSION | Remove direct membership |
 | REMOVE_PERMISSION_ASSIGNMENT | Remove direct membership |
+| REMOVE_APPLICATION_FROM_USER | Delete one AD user account; same contract as REMOVE_ACCOUNT |
 | REMOVE_ACCOUNT | Delete one AD user account; use `account`, not `user`/`group` |
+| ADD_APPLICATION_TO_USER | Create one disabled AD user; use `creation`, not existing account/user/group references |
 
-## Account deletion (1.1.0-SNAPSHOT)
+## Account creation (1.2.0-SNAPSHOT)
+
+See [Account creation](account-creation.md) for the complete contract, text-attribute policy and suffix/retry semantics, and [create-account.json](../examples/create-account.json) for a payload. Success codes are ACCOUNT_CREATED and ACCOUNT_ALREADY_EXISTS. Replies additionally include accountName and userPrincipalName for creation; existing response mappings are unchanged.
+
+## Account deletion (introduced in 1.1.0-SNAPSHOT)
 
 ```json
 {
@@ -104,3 +110,7 @@ These samples are for fulfillment responses, not the connection-test response, w
 In the lab, HTTP 200 led to completed fulfillment/pending verification; the next successful collection/publication verified the directory change. Already-member success preserved its descriptive comment. HTTP 400 and 503 led to RETRY with IG's generic client/server error rather than the service's detailed error body. Correlate the IG change item with service logs for diagnosis. These observations do not establish IG behavior for every error status/version.
 
 IG must provide the intended account, especially for multi-account identities. Sub-applications can omit account context in the generic REST payload; do not substitute the identity ID or select an arbitrary account. That integration limitation is outside the accepted 1.0.0 scope.
+
+## Business-role operations (1.3.1-SNAPSHOT)
+
+REMOVE_APPLICATION_FROM_USER shares the REMOVE_ACCOUNT deletion contract and response. Only the user identifier for ADD_PERMISSION_TO_USER additionally accepts a `reference` string (employeeID, 1–16 characters), mutually exclusive with dn/guid, for initial memberships during account creation. Account deletion and membership removals require explicit DN/GUID and reject references with HTTP 400. Groups continue to require DN/GUID. Reference searches use the connected domain rather than dps.search-base. ADD_PERMISSION_TO_USER can wait briefly for creation before resolving its reference; missing after the wait returns 503 ACCOUNT_NOT_READY. Other missing objects remain errors. See [business-role provisioning](business-role-provisioning.md) for payloads, updated scripts, ordering and limitations.
