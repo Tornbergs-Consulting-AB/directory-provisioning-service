@@ -1,0 +1,10 @@
+{
+  "changeItemId": "174",
+  "target": "DEMO",
+  "requestType": "MODIFY_USER_PROFILE",
+  "user": {"guid": "35c3d1fc-6e13-493e-9501-0d103bcc344f"},
+  "modifications": [
+    {"attribute": "otherTelephone", "add": ["4321", "4221"], "remove": ["1236", "1235"]},
+    {"attribute": "department", "add": ["Not-Sales"], "remove": ["Sales"]}
+  ]
+}

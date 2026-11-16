@@ -66,3 +66,7 @@ See [Account creation](account-creation.md) for placement from IG, employeeID re
 ## Reference resolution wait (1.3.1-SNAPSHOT)
 
 `dps.account-reference-wait-ms=10000` is the default wait for missing employeeID references on membership additions (range 0–30000). The wait does not apply to DN/GUID lookup, membership removal or deletion. Allow additional LDAP-operation time in the IG read timeout. See [business-role provisioning](business-role-provisioning.md).
+
+## Profile updates (1.4.0-SNAPSHOT)
+
+`dps.update-allowed-attributes=otherTelephone,department` enables these two fields by default. This is separate from creation attributes. Names are case-insensitive; invalid/reserved names or an empty list prevent startup. AD schema and ACL validation still apply. See [profile attribute updates](attribute-updates.md).

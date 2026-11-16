@@ -54,3 +54,7 @@ Python 3 and Node.js are development tools for generation/verification; Node.js 
 To generate imports with a chosen logical target label, use `python scripts/generate_ig_imports.py --target AD`. The generator accepts no passwords and still leaves connection credentials/trust settings empty. `--check --target AD` checks that customized output. Keep public examples on the default `CHANGE_ME` label, and do not commit customer credentials or certificate material.
 
 The generator refreshes scripts and profile mappings, clears connection values except an explicit list of safe settings, preserves the exported mapping structure and restricts enabled operations. It does not discover or upgrade IG templates, set global context attributes, or prove import compatibility.
+
+## Profile update input (1.4.0-SNAPSHOT)
+
+The regenerated examples enable MODIFY_USER_PROFILE and include userAttributeModifications. Add ext_aDGUID/ext_aDDN to identity fulfillment context and configure the explicit IG-to-LDAP map in the request script. See [profile attribute updates](attribute-updates.md). Preserve customer creation/reference settings when updating scripts. Test example imports on your IG version before replacing existing targets.

@@ -1,4 +1,4 @@
-# API and IG integration — 1.3.1-SNAPSHOT
+# API and IG integration — 1.4.0-SNAPSHOT
 
 ## Endpoints
 
@@ -114,3 +114,7 @@ IG must provide the intended account, especially for multi-account identities. S
 ## Business-role operations (1.3.1-SNAPSHOT)
 
 REMOVE_APPLICATION_FROM_USER shares the REMOVE_ACCOUNT deletion contract and response. Only the user identifier for ADD_PERMISSION_TO_USER additionally accepts a `reference` string (employeeID, 1–16 characters), mutually exclusive with dn/guid, for initial memberships during account creation. Account deletion and membership removals require explicit DN/GUID and reject references with HTTP 400. Groups continue to require DN/GUID. Reference searches use the connected domain rather than dps.search-base. ADD_PERMISSION_TO_USER can wait briefly for creation before resolving its reference; missing after the wait returns 503 ACCOUNT_NOT_READY. Other missing objects remain errors. See [business-role provisioning](business-role-provisioning.md) for payloads, updated scripts, ordering and limitations.
+
+## Profile updates (1.4.0-SNAPSHOT)
+
+MODIFY_USER_PROFILE requires user with DN/GUID and modifications with explicit add/remove arrays. No reference targeting. See [profile attribute updates](attribute-updates.md) for the contract and [example JSON](../examples/modify-user-profile.json).

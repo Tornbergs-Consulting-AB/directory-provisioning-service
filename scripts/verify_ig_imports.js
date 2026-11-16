@@ -16,7 +16,7 @@ function execute(script, input) {
 const account = '11111111-2222-3333-4444-555555555555';
 const identity = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee';
 const permission = '99999999-8888-7777-6666-555555555555';
-const supported = ['ADD_PERMISSION_TO_USER', 'REMOVE_ACCOUNT_PERMISSION', 'REMOVE_PERMISSION_ASSIGNMENT', 'REMOVE_ACCOUNT', 'REMOVE_APPLICATION_FROM_USER', 'ADD_APPLICATION_TO_USER'];
+const supported = ['ADD_PERMISSION_TO_USER', 'REMOVE_ACCOUNT_PERMISSION', 'REMOVE_PERMISSION_ASSIGNMENT', 'REMOVE_ACCOUNT', 'REMOVE_APPLICATION_FROM_USER', 'ADD_APPLICATION_TO_USER', 'MODIFY_USER_PROFILE'];
 for (const variant of ['account-guid', 'user-guid']) {
     const document = JSON.parse(fs.readFileSync(path.join(root, 'examples/ig/directory-provisioning-' + variant + '.json'), 'utf8'));
     const collector = document.dataCollectors.collectors[0];
@@ -48,12 +48,16 @@ for (const variant of ['account-guid', 'user-guid']) {
     });
     for (const requestType of supported) for (const encoded of [false, true]) {
         const input = {changeItemId: '13955', changeRequestType: requestType,
-            accountProfile: {accountId: account}, userProfile: {userId: identity, firstName:'Daniel', lastName:'Persson', workforceId:'123456', department:'Sales'}, permissionProfile: {permissionId: permission}};
+            accountProfile: {accountId: account}, userProfile: {userId: identity, firstName:'Daniel', lastName:'Persson', workforceId:'123456', department:'Sales',ext_aDGUID:identity}, permissionProfile: {permissionId: permission},userAttributeModifications:[{attributeName:'ext_department-Ext',changeType:1,attributeValue:'Not-Sales'},{attributeName:'ext_department-Ext',changeType:2,attributeValue:'Sales'}]};
         if (encoded) for (const name of ['accountProfile', 'userProfile', 'permissionProfile']) input[name] = JSON.stringify(input[name]);
         check(() => {
             const output = JSON.parse(execute(configuredCreation, input));
             assert.equal(output.service_method, 'POST');
-            if (requestType === 'ADD_APPLICATION_TO_USER') {
+            if (requestType === 'MODIFY_USER_PROFILE') {
+                assert.equal(output.http_body.user.guid,identity);
+                assert.equal(output.http_body.modifications[0].attribute,'department');
+                assert.deepEqual(output.http_body.modifications[0].add,['Not-Sales']);
+            } else if (requestType === 'ADD_APPLICATION_TO_USER') {
                 assert.equal(output.http_body.creation.reference, '123456-EMP');
                 assert.equal(output.http_body.creation.attributes.sAMAccountName, 'dpersson');
                 assert.equal(output.http_body.account, undefined);
@@ -149,4 +153,27 @@ check(() => {
  assert.throws(()=>vm.runInNewContext(ordering,{changesetUtils:{updateChangesetOrderByChangeRequestType:()=>{throw Error('Synthetic failure');},rollback:()=>{rolledBack=true;}}}));
  assert(rolledBack);
 });
+for(const name of ['ig-request.js','ig-request-guid.js','ig-request-user-guid.js']) {
+ const script=fs.readFileSync(path.join(root,'scripts',name),'utf8');
+ function input(){return {changeItemId:'174',changeRequestType:'MODIFY_USER_PROFILE',userProfile:{ext_aDGUID:identity,ext_aDDN:'cn=Target,dc=example,dc=com',workforceId:'1006'},userAttributeModifications:[
+  {attributeName:'ext_otherTelephone',changeType:1,attributeValue:'4321'},
+  {attributeName:'ext_otherTelephone',changeType:1,attributeValue:'4221'},
+  {attributeName:'ext_otherTelephone',changeType:2,attributeValue:'1236'},
+  {attributeName:'ext_otherTelephone',changeType:2,attributeValue:'1235'},
+  {attributeName:'ext_department-Ext',changeType:1,attributeValue:'Not-Sales'},
+  {attributeName:'ext_department-Ext',changeType:2,attributeValue:'Sales'}]};}
+ check(()=>{
+  const b=JSON.parse(execute(script,input())).http_body;
+  assert.equal(b.user.guid,identity);assert.equal(b.modifications.length,2);
+  assert.deepEqual(b.modifications[0],{attribute:'otherTelephone',add:['4321','4221'],remove:['1236','1235']});
+ });
+ check(()=>{let i=input();delete i.userProfile.ext_aDGUID;assert.equal(JSON.parse(execute(script,i)).http_body.user.dn,i.userProfile.ext_aDDN);});
+ check(()=>{let i=input();i.userProfile.ext_aDGUID='bad';assert.throws(()=>execute(script,i));});
+ check(()=>{let i=input();delete i.userProfile.ext_aDGUID;delete i.userProfile.ext_aDDN;assert.throws(()=>execute(script,i));});
+ check(()=>{let i=input();i.userProfile=JSON.stringify(i.userProfile);i.userAttributeModifications=JSON.stringify(i.userAttributeModifications);assert.equal(JSON.parse(execute(script,i)).http_body.modifications.length,2);});
+ for(const bad of ['UNMAPPED','__proto__'])check(()=>{let i=input();i.userAttributeModifications[0].attributeName=bad;assert.throws(()=>execute(script,i));});
+ for(const bad of [null,123,true,[],{}])check(()=>{let i=input();i.userAttributeModifications[0].attributeValue=bad;assert.throws(()=>execute(script,i));});
+ check(()=>{let i=input();i.userAttributeModifications[0].changeType=3;assert.throws(()=>execute(script,i));});
+ check(()=>{let i=input();i.userAttributeModifications.push({attributeName:'ext_otherTelephone',changeType:2,attributeValue:'4321'});assert.throws(()=>execute(script,i));});
+}
 console.log('PASS: ' + count + ' import configuration and embedded transformation cases; no IG/AD calls');

@@ -27,3 +27,7 @@ The table is a review of the operations DPS performs, not a universal ACL templa
 Protected administrative objects may not inherit normal OU delegation. Do not weaken their protection to make a provisioning test pass. Keep this integration's managed accounts and groups out of privileged administrative scope.
 
 For troubleshooting, temporarily enable the application's DEBUG logging and JSON diagnostics. Explicit LDAP insufficient access maps to HTTP 403 ACCESS_DENIED. Other AD constraint/protection failures can produce 502 with an LDAP result code. A successful connection test proves TLS/bind, not authorization for writes. Test each operation individually and inspect AD effective access using the actual bind account.
+
+## Profile attribute changes (1.4.0-SNAPSHOT)
+
+Delegate read and write access on the intended descendant User attributes, initially otherTelephone and department. The bind account also needs read access to objectGUID and relevant AD attributeSchema metadata. Create/delete rights on the parent OU do not themselves prove these update rights. See [profile attribute updates](attribute-updates.md).

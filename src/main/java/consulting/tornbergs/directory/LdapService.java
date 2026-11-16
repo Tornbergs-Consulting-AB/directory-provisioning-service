@@ -28,6 +28,7 @@ public class LdapService {
     @ConfigProperty(name="dps.creation-required-attributes",defaultValue="sAMAccountName,userPrincipalName,givenName,sn") String creationRequired;
     @ConfigProperty(name="dps.creation-max-suffix",defaultValue="100") int creationMaxSuffix;
     @ConfigProperty(name="dps.account-reference-wait-ms",defaultValue="10000") int accountReferenceWait;
+    @ConfigProperty(name="dps.update-allowed-attributes",defaultValue="otherTelephone,department") String updateAllowed;
     // One creation at a time per service instance, irrespective of caller credentials.
     private final java.util.concurrent.locks.ReentrantLock creationLock=new java.util.concurrent.locks.ReentrantLock();
     @ConfigProperty(name="dps.startup-validation",defaultValue="true") boolean startupValidation;
@@ -38,6 +39,7 @@ public class LdapService {
         }
         try {
             ConfigurationChecks.validate(target,host,port,allowed,searchBase,connectTimeout,operationTimeout,maxConcurrent);
+            AttributeUpdates.allowedNames(updateAllowed);
             var allowedCreation=AccountCreation.configuredNames(creationAllowed);
             var requiredCreation=AccountCreation.configuredNames(creationRequired);
             if(accountReferenceWait<0 || accountReferenceWait>30000)throw new IllegalArgumentException("Invalid reference wait");
@@ -118,6 +120,12 @@ public class LdapService {
                     if(!creationLock.tryLock())throw new Api.Failure(503,"CREATION_BUSY","Another creation is in progress; retry later.");
                     try{return AccountCreation.create(connection,plan);}
                     finally{creationLock.unlock();}
+                }
+                if(request.requestType().equals("MODIFY_USER_PROFILE")) {
+                    phase="update-profile";
+                    var result=AttributeUpdates.update(connection,request.user(),searchBase,request.modifications(),updateAllowed);
+                    LOG.debugf("request=%s object=user identifierType=%s resolvedDN=%s",correlation,request.user().identifierType(),result.userDN());
+                    return result;
                 }
                 if (ProvisioningResource.isDeletion(request.requestType())) {
                     phase="delete-account";

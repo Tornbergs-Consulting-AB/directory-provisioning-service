@@ -1,4 +1,4 @@
-# Directory Provisioning Service — 1.3.1-SNAPSHOT
+# Directory Provisioning Service — 1.4.0-SNAPSHOT
 
 Java service receiving HTTPS provisioning requests and updating direct Active Directory group membership over LDAPS. Runs on Linux and Windows. Identifies users/groups by DN or canonical AD objectGUID; GUID lookup resolves their current DNs before changing one member value.
 
@@ -6,6 +6,7 @@ This development version adds disabled AD account creation and retains account d
 
 ## Release scope
 
+- `MODIFY_USER_PROFILE` applies allowlisted text attribute deltas to an existing user by DN/GUID.
 - `ADD_APPLICATION_TO_USER` creates a disabled user with an employeeID reference and bounded domain-level name suffixes.
 
 - POST `/api/v1/provisioning`: ADD_PERMISSION_TO_USER, REMOVE_ACCOUNT_PERMISSION and REMOVE_PERMISSION_ASSIGNMENT.
@@ -56,4 +57,6 @@ Start with the [documentation index](docs/README.md). Project source, scripts, d
 
 See [SUPPORT.md](SUPPORT.md) for best-effort maintenance and customer ownership of deployment, [CONTRIBUTING.md](CONTRIBUTING.md) for contributions, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [distribution instructions](docs/distribution.md) for release preparation. This archive does not publish an external repository.
 
-The 1.3.1-SNAPSHOT development build adds [business-role account/reference handling](docs/business-role-provisioning.md), REMOVE_APPLICATION_FROM_USER deletion, and [AD delegation guidance](docs/ad-delegation.md). Validate the updated role flow in the lab before deploying it.
+The 1.4.0-SNAPSHOT development build adds [business-role account/reference handling](docs/business-role-provisioning.md), REMOVE_APPLICATION_FROM_USER deletion, and [AD delegation guidance](docs/ad-delegation.md). Validate the updated role flow in the lab before deploying it.
+
+The 1.4.0-SNAPSHOT development build adds MODIFY_USER_PROFILE for allowlisted AD text attribute deltas. See [profile attribute updates](docs/attribute-updates.md) for upgrade, payload, schema restrictions, concurrency behavior and lab tests.

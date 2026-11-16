@@ -61,7 +61,7 @@ quarkus.log.category."consulting.tornbergs.directory".level=TRACE
                     try:
                         with urllib.request.urlopen('https://localhost:18444/health', context=context, timeout=.5) as reply:
                             assert reply.status == 200
-                            assert json.loads(reply.read())["version"] == "1.3.1-SNAPSHOT"
+                            assert json.loads(reply.read())["version"] == "1.4.0-SNAPSHOT"
                         break
                     except (OSError, urllib.error.URLError):
                         time.sleep(.2)
@@ -73,6 +73,13 @@ quarkus.log.category."consulting.tornbergs.directory".level=TRACE
                                       'nested': [{'token': 'BODY_SECRET_SENTINEL'}]}),
                           '{"password":"MALFORMED_SECRET_SENTINEL',
                           '{"changeItemId":{},"unexpected":"VISIBLE_TYPE_ERROR"}']
+                expected = ['UNSUPPORTED_OPERATION', 'INVALID_JSON', 'INVALID_JSON']
+                profile = {'changeItemId':'174','target':'TEST','requestType':'MODIFY_USER_PROFILE',
+                           'user':{'reference':'1006'},'modifications':[{'attribute':'department','add':['Not-Sales'],'remove':['Sales']}]}
+                bodies.append(json.dumps(profile)); expected.append('INVALID_IDENTIFIER')
+                profile['user'] = {'guid':'35c3d1fc-6e13-493e-9501-0d103bcc344f'}
+                profile['modifications'][0]['add'] = [123]
+                bodies.append(json.dumps(profile)); expected.append('INVALID_JSON')
                 for count, body in enumerate(bodies):
                     request = urllib.request.Request('https://localhost:18444/api/v1/provisioning',
                         data=body.encode(), headers={'Content-Type': 'application/json',
@@ -85,7 +92,7 @@ quarkus.log.category."consulting.tornbergs.directory".level=TRACE
                         assert error.code == 400
                         reply = json.loads(error.read())
                         assert reply['requestId'] == f'test-{count}'
-                        assert reply['code'] == ('UNSUPPORTED_OPERATION' if count == 0 else 'INVALID_JSON')
+                        assert reply['code'] == expected[count]
             finally:
                 process.terminate()
                 process.wait(timeout=10)

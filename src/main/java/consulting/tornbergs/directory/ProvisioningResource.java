@@ -63,10 +63,11 @@ public class ProvisioningResource {
             String[] credentials=credentials(auth);
             DirectoryClient.Outcome result=ldap.update(request,credentials[0],credentials[1],correlation);
             boolean deleting=isDeletion(request.requestType());
+            boolean updating="MODIFY_USER_PROFILE".equals(request.requestType());
             boolean creating=request.requestType().equals("ADD_APPLICATION_TO_USER");
             String suffix=result.changed()?"":" No change required: "+(result.code().equals("ALREADY_MEMBER")?"already a direct member.":"not a direct member.");
             String comment="Change Item '"+item+"' Fulfilled. Type: "+request.requestType()+", Target Account: "+result.userDN()+(creating?(result.changed()?". Disabled account created.":". No change required: matching disabled account already exists.")+" Account name: "+result.accountName()+", UPN: "+result.upn():
-                    deleting?". Account deleted.":", Target Permission: "+result.groupDN()+suffix);
+                    deleting?". Account deleted.":updating?(result.changed()?". Profile attributes updated.":". No change required: requested profile values already satisfied."):", Target Permission: "+result.groupDN()+suffix);
             var reply=new Api.Reply(item,correlation,"iga-"+item,result.changed()?"CHANGED":"UNCHANGED",result.code(),comment,result.userDN(),result.groupDN(),result.accountName(),result.upn());
             status=200;
             LOG.infof("request=%s changeItem=%s operation=%s outcome=%s code=%s",correlation,item,request.requestType(),result.changed()?"CHANGED":"UNCHANGED",result.code());
@@ -83,8 +84,17 @@ public class ProvisioningResource {
     static void validate(Api.ProvisioningRequest r) {
         if (r==null || r.changeItemId()==null || !r.changeItemId().matches("[0-9]{1,20}") || r.target()==null)
             throw new Api.Failure(400,"INVALID_REQUEST","changeItemId and target are required.");
-        if (r.requestType()==null || !Set.of("ADD_PERMISSION_TO_USER","REMOVE_ACCOUNT_PERMISSION","REMOVE_PERMISSION_ASSIGNMENT","REMOVE_ACCOUNT","REMOVE_APPLICATION_FROM_USER","ADD_APPLICATION_TO_USER").contains(r.requestType()))
+        if (r.requestType()==null || !Set.of("ADD_PERMISSION_TO_USER","REMOVE_ACCOUNT_PERMISSION","REMOVE_PERMISSION_ASSIGNMENT","REMOVE_ACCOUNT","REMOVE_APPLICATION_FROM_USER","ADD_APPLICATION_TO_USER","MODIFY_USER_PROFILE").contains(r.requestType()))
             throw new Api.Failure(400,"UNSUPPORTED_OPERATION","Unsupported requestType.");
+        if(r.requestType().equals("MODIFY_USER_PROFILE")) {
+            if(r.group()!=null || r.account()!=null || r.creation()!=null)
+                throw new Api.Failure(400,"INVALID_REQUEST","Profile updates require user and modifications only.");
+            validateRef(r.user());
+            if(r.user().reference()!=null)throw new Api.Failure(400,"INVALID_IDENTIFIER","Profile updates require an explicit dn or guid; references are not allowed.");
+            AttributeUpdates.validate(r.modifications());
+            return;
+        }
+        if(r.modifications()!=null)throw new Api.Failure(400,"INVALID_REQUEST","modifications is valid only for MODIFY_USER_PROFILE.");
         if(r.requestType().equals("ADD_APPLICATION_TO_USER")) {
             if(r.user()!=null || r.group()!=null || r.account()!=null || r.creation()==null)
                 throw new Api.Failure(400,"INVALID_REQUEST","Account creation requires creation only; omit user, group and account.");
